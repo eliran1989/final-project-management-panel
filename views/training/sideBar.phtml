@@ -1,0 +1,41 @@
+
+<div class="continer-fluid" >
+
+<div class="col-md-2" id="sideBar">
+<div class="row">
+<div class="page-header text-center" style="margin-top: 20px; border-bottom: none;"><img src="logo.png" height="80" width="auto" alt="logo" /></div>
+</div>
+
+
+<div class="row text-center">
+<div class="btn-group">
+  <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $user['firstName']." ".$user['lastName']?> <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+<li><a href="index.php?section=<?=(isset($_SESSION['trainer']) || isset($_COOKIE['trainer']))?"training":"default";?>&action=logOut"><span class="glyphicon glyphicon-log-out"></span> התנתק</a></li>
+  </ul>
+</div>
+
+
+</div>
+
+<div class="row">
+<div class="page-header text-center" style="margin-top: 5px;"><h3><small>מערכת ניהול</small></h3></div>
+
+<ul class="nav nav-pills nav-stacked text-center">
+   <li class="active"><a href="index.php?section=training"><span class="glyphicon glyphicon-home"></span> תוכנית אימונים</a></li>
+</ul>
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<script src="views/reports/subs/javascript/Chart.min.js"></script>
+<script src="views/reports/subs/javascript/ageBreakdown.js"></script>
+<script src="views/reports/subs/javascript/sexBreakdown.js"></script>
+
+
+<div class="col-md-offset-2">
+
+
+<div class="col-md-5 col-md-offset-1">
+  
+  <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">נתוני מנויים</h3>
+      </div>
+      <div class="panel-body">
+         <div class="text-center"><p class="text-primary">סה"כ מנויים רשומים: <?= $subsCount?></p></div>
+      <div class="col-sm-6 text-center">
+        <div class="page-header" style="margin-top:0px;"><h4>התפלגות מגדרית</h4></div>
+        <canvas id="myChart" height="auto" width="135"></canvas>
+        <div><a href="index.php?section=reports&action=showReport&num=4" ><span class="glyphicon glyphicon-zoom-in"></span></a></div>
+      </div>
+
+      <div class="col-sm-6 text-center">
+       <div class="page-header" style="margin-top:0px;"><h4>התפלגות גילאים</h4></div>
+        <canvas id="agesBreakDown" height="auto" width="135"></canvas>
+      <div><a href="index.php?section=reports&action=showReport&num=3" ><span class="glyphicon glyphicon-zoom-in"></span></a></div>
+      </div>
+
+
+      </div>
+
+    <div class="panel-footer text-center"><a href="index.php?section=reports&action=reportsSubsMain">דוחות נוספים</a></div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+<div class="col-md-6">
+
+
+
+</div>
+
+
+</div>

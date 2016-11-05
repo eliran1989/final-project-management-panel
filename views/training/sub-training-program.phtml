@@ -1,0 +1,100 @@
+  <img src="loader.gif" id="loader" style="position: fixed;margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; display:none;">
+
+
+<div class="col-md-10">
+  <form method="get" id="add">
+  <input type='hidden' name='section' value='training'>
+  <input type='hidden' name='action' value='addProgramInterface'>
+  <?php
+  echo "<input type='hidden' name='id' value='".$sub['id']."'>
+  <input type='hidden' name='firstName' value='".$sub['firstName']."'>
+  <input type='hidden' name='lastName' value='".$sub['lastName']."'>"
+  ?>
+  </form>
+
+<button class="btn btn-default addBtn">יצירכת תוכנית חדשה</button>
+<h2><small>תוכניות אימון של <?php echo $sub['firstName']." ".$sub['lastName']?></small></h2>
+  <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>מטרה</th>
+      <th>סוג</th>
+      <th>נוצר באתריך</th>
+      <th>סיום תוכנית</th>
+      <th>נוצר על ידי</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+<?php 
+if (count($programs)>0)
+{
+
+   for ($i=0 ; $i<count($programs); $i++)
+   { 
+
+
+      echo "<tr class='showProgram' style='cursor:pointer;'>
+          <form method='get'>
+          <input type='hidden' name='section' value='training'>
+          <input type='hidden' name='action' value='showProgram'>
+          <input type='hidden' name='subId' value='".$programs[$i]['sub_id']."'>
+          <input type='hidden' name='progId' value='".$programs[$i]['program_id']."'>
+          <input type='hidden' name='firstName' value='".$sub['firstName']."'>
+          <input type='hidden' name='lastName' value='".$sub['lastName']."'></form>
+          <td>".($i+1)."</td><td>".$programs[$i]['purpose']."</td><td>".$programs[$i]['type']."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_create']))."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_end']))."</td><td>".$programs[$i]['create_by']."</td>
+              </tr>";
+   }
+
+}
+?>
+
+
+  </tbody>
+</table> 
+    <?php
+
+    if (count($programs)==0)
+    {
+      echo '<div class="alert alert-info text-center"><strong>
+      לא נמצאו תוכניות אימון למנוי זה. להוספת תוכנית <a href="#" class="addBtn">לחץ</a></strong> 
+      </div>';
+    }
+
+
+
+   ?> 
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+$(".addBtn").click(function (){
+
+$("#add").submit();
+
+
+});
+
+
+$(".showProgram").click(function (){
+$(".col-md-10:eq(1)").fadeOut("slow");
+$("#loader").fadeIn("slow");
+
+$(this).find("form").submit();
+
+});
+
+});
+
+</script>
+
+
+

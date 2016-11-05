@@ -1,0 +1,278 @@
+
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">עריכת תוכנית</h4>
+      </div>
+      <div class="modal-body">
+       <form id="editForm" class="form-horizontal" method="post" action="index.php?section=training&action=showProgram&subId=<?php echo $_GET['subId'] ?>&progId=<?php echo $_GET['progId']?>&firstName=<?php echo $_GET['firstName'] ?>&lastName=<?php echo $_GET['lastName']?>">
+
+   <div class="form-group">
+      <label for="purpose" class="col-md-3 control-label">מטרה:</label>
+    <div class="col-md-5">
+     <select name="purpose" class="form-control">
+       <option value="חיטוב">חיטוב</option>
+         <option <?= ($purpose=='עליה במסה')? "selected" :"";?> value="עליה במסה">עליה במסה</option>
+         <option <?= ($purpose=='שריפת שומן')? "selected" :"";?> value="שריפת שומן">שריפת שומן</option>
+         <option <?= ($purpose=='הורדה במשקל')? "selected" :"";?> value="הורדה במשקל">הורדה במשקל</option>
+         <option <?= ($purpose!='עליה במסה') && ($purpose!='שריפת שומן') && ($purpose!='הורדה במשקל') && ($purpose!='חיטוב') ? "selected" :"";?> value="other">אחר</option>
+         </select>
+    </div>
+
+        <input class="form-control col-md-3" type="text" name="other_purpose" placeholder="אחר" <?= ($purpose!='עליה במסה') && ($purpose!='שריפת שומן') && ($purpose!='הורדה במשקל') && ($purpose!='חיטוב') ? "value='".$purpose."'" :"disabled=''";?> required> 
+
+    </div>
+
+    <div class="form-group">
+      <label for="trainingType" class="col-md-3 control-label">סוג:</label>
+      <div class="col-md-5">
+     <select name="trainingType" class="form-control">
+         <option <?= ($type=='A')? "selected" :"";?> value="AB">AB</option>
+         <option <?= ($type=='ABC')? "selected" :"";?> value="ABC">ABC</option>
+         <option <?= ($type=='ABCD')? "selected" :"";?> value="ABCD">ABCD</option>
+         </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="time" class="col-md-3 control-label">משך התוכנית:</label>
+      <div class="col-md-5">
+     <select name="training_lenght" class="form-control">
+         <option <?= ($Length=='2')? "selected" :"";?> value="2">חודשיים</option>
+         <option <?= ($Length=='3')? "selected" :"";?> value="3">שלושה חודשים</option>
+         <option <?= ($Length=='6')? "selected" :"";?> value="6">חצי שנה</option>
+         <option <?= ($Length=='12')? "selected" :"";?> value="12">שנה</option>
+         </select>
+      </div>
+    </div>
+
+
+<div id="training" class="row">
+  <div class="col-md-12">
+  <div class="panel panel-info">
+       <div class="panel-heading">אימון A</div>
+           <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th>שריר</th>
+                   <th class="col-md-5">תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  
+
+                 <?php    
+                  for ($i=0 ;$i<count($A);$i++)
+                  {
+                  echo  "<tr><td>".($i+1)."</td>";
+                   echo '<td class="col-xs-3">
+                      <select name="A_muscle_'.($i+1).'" class="form-control muscles" required>
+                        <option value="'.$A[$i]['muscle'].'">'.$A[$i]['muscle'].'</option>
+                      </select>
+                  </td>
+                  <td class="col-md-5">
+                      <select name="A_exercise_'.($i+1).'" class="form-control exercises" required>
+                        <option value="'.$A[$i]['exercise'].'">'.$A[$i]['exercise'].'</option>
+                      </select>
+                  </td>
+                  <td><input name="A_sets_'.($i+1).'" class="form-control" type="text" value='.$A[$i]['sets'].' required></td>
+                  <td><input name="A_repeated_'.($i+1).'" class="form-control" value='.$A[$i]['repeats'].' type="text" required></td>
+                  </tr>';
+                  }
+
+                  ?>
+                </tbody>
+              </table> 
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-default plusBtn"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="btn btn-default minusBtn disabled"><span class="glyphicon glyphicon-minus"></span></a>
+        </div>
+           </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-md-12">
+  <div class="panel panel-info">
+       <div class="panel-heading">אימון B</div>
+           <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th>שריר</th>
+                   <th class="col-md-5">תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>
+                <?php    
+                  for ($i=0 ;$i<count($B);$i++)
+                  {
+                  echo  "<tr><td>".($i+1)."</td>";
+                   echo '<td class="col-xs-3">
+                      <select name="B_muscle_'.($i+1).'" class="form-control muscles" required>
+                        <option value="'.$B[$i]['muscle'].'">'.$B[$i]['muscle'].'</option>
+                      </select>
+                  </td>
+                  <td class="col-md-5">
+                      <select name="B_exercise_'.($i+1).'" class="form-control exercises" required>
+                        <option value="'.$B[$i]['exercise'].'">'.$B[$i]['exercise'].'</option>
+                      </select>
+                  </td>
+                  <td><input name="B_sets_'.($i+1).'" class="form-control" type="text" value='.$B[$i]['sets'].' required></td>
+                  <td><input name="B_repeated_'.($i+1).'" class="form-control" value='.$B[$i]['repeats'].' type="text" required></td>
+                  </tr>';
+                  }
+
+                  ?>
+                </tbody>
+              </table> 
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-default plusBtn"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="btn btn-default minusBtn disabled"><span class="glyphicon glyphicon-minus"></span></a>
+        </div>
+           </div>
+
+    </div>
+</div>
+
+
+
+
+<?php 
+if (isset($C))
+{
+  echo "<div class='col-md-12'>
+  <div class='panel panel-info'>
+       <div class='panel-heading'>אימון C</div>
+           <div class='panel-body'>
+              <table class='table table-striped'>
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th>שריר</th>
+                   <th class='col-md-5'>תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>";
+                
+                  for ($i=0 ;$i<count($C);$i++)
+                  {
+                  echo  "<tr><td>".($i+1)."</td>";
+                   echo '<td class="col-xs-3">
+                      <select name="C_muscle_'.($i+1).'" class="form-control muscles" required>
+                        <option value="'.$C[$i]['muscle'].'">'.$C[$i]['muscle'].'</option>
+                      </select>
+                  </td>
+                  <td class="col-md-5">
+                      <select name="C_exercise_'.($i+1).'" class="form-control exercises" required>
+                        <option value="'.$C[$i]['exercise'].'">'.$C[$i]['exercise'].'</option>
+                      </select>
+                  </td>
+                  <td><input name="C_sets_'.($i+1).'" class="form-control" type="text" value='.$C[$i]['sets'].' required></td>
+                  <td><input name="C_repeated_'.($i+1).'" class="form-control" value='.$C[$i]['repeats'].' type="text" required></td>
+                  </tr>';
+                  }
+
+             
+                echo "</tbody>
+              </table> 
+        <div class='btn-group btn-group-justified'>
+            <a class='btn btn-default plusBtn'><span class='glyphicon glyphicon-plus'></span></a>
+            <a class='btn btn-default minusBtn disabled'><span class='glyphicon glyphicon-minus'></span></a>
+        </div>
+           </div>
+
+    </div>
+</div>";
+}
+
+
+if (isset($D))
+{
+  echo "<div class='col-md-12'>
+  <div class='panel panel-info'>
+       <div class='panel-heading'>אימון D</div>
+           <div class='panel-body'>
+              <table class='table table-striped'>
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th>שריר</th>
+                   <th class='col-md-5'>תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>";
+                
+                  for ($i=0 ;$i<count($D);$i++)
+                  {
+                  echo  "<tr><td>".($i+1)."</td>";
+                   echo '<td class="col-xs-3">
+                      <select name="D_muscle_'.($i+1).'" class="form-control muscles" required>
+                        <option value="'.$D[$i]['muscle'].'">'.$D[$i]['muscle'].'</option>
+                      </select>
+                  </td>
+                  <td class="col-md-5">
+                      <select name="D_exercise_'.($i+1).'" class="form-control exercises" required>
+                        <option value="'.$D[$i]['exercise'].'">'.$D[$i]['exercise'].'</option>
+                      </select>
+                  </td>
+                  <td><input name="D_sets_'.($i+1).'" class="form-control" type="text" value='.$D[$i]['sets'].' required></td>
+                  <td><input name="D_repeated_'.($i+1).'" class="form-control" value='.$D[$i]['repeats'].' type="text" required></td>
+                  </tr>';
+                  }
+
+             
+                echo "</tbody>
+              </table> 
+        <div class='btn-group btn-group-justified'>
+            <a class='btn btn-default plusBtn'><span class='glyphicon glyphicon-plus'></span></a>
+            <a class='btn btn-default minusBtn disabled'><span class='glyphicon glyphicon-minus'></span></a>
+        </div>
+           </div>
+
+    </div>
+</div>";
+}
+
+
+
+
+?>
+
+</div>
+
+
+    <div class="form-group">
+      <label for="textArea" class="col-md-3 control-label">הערות:</label>
+      <div class="col-md-6">
+        <textarea class="form-control" name="note" rows="2" ><?php echo $note;?></textarea>
+      </div>
+
+
+</fieldset>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ביטול</button>
+        <button type="submit" form="editForm"  class="btn btn-primary">שמור שינויים</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

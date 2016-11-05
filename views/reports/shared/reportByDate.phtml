@@ -1,0 +1,173 @@
+<div class="col-md-10">
+<div class="panel panel-default">
+   <div class="panel-heading">
+    <ul class="breadcrumb" style="background:none; padding:0px; margin:0px;">
+  <li><a href="index.php?section=reports">דוחות</a></li>
+  <li><a href="index.php?section=reports&action=reportsSubsMain"><?php echo $category ?></a></li>
+  <li class="active"> <?php echo $reportName ?></li>
+</ul>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal col-md-offset-4 col-md-3">
+		<div class="form-group text-center">
+      <label class="control-label" for="daterange">טווח תאריכים:</label>
+      <input type="text" id="daterange" class="form-control text-center" autofocus/>
+		</div>
+		<div class="form-group">
+		<button type="button" class="btn btn-defalut col-xs-12" id="showReport">
+ 		 הצג דוח
+		</button>		
+	</div>
+    </form>	
+  </div>
+</div>
+</div> 
+
+
+
+<div class="modal fade" id="report" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title text-center"><small></small></h4>
+      </div>
+      <div class="modal-body">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>תעודת זהות</th>
+      <th>שם פרטי</th>
+      <th>שם משפחה</th>
+      <th>תאריך רישום</th>
+      <th>תאריך סיום מנוי</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onClick="window.print()"><span class="glyphicon glyphicon-print"></span> הדפס דוח</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+ $("#daterange").daterangepicker({
+  "autoApply": true, 
+  "opens": "center",
+    "ranges": {
+        "היום": [
+            moment(),
+            moment()
+        ],
+        "אתמול": [
+            moment().subtract(1, 'days'),
+            moment().subtract(1, 'days')
+            
+        ],
+        "7 ימים אחרונים": [
+            moment().subtract(7, 'days'),
+            moment()
+        ],
+        "30 ימים אחרונים": [
+            moment().subtract(30, 'days'),
+            moment()
+        ],
+        "מתחילת החודש": [
+            moment().startOf('month'),
+            moment()
+        ],
+        "חודש שעבר": [
+            moment().subtract(1, 'month').startOf('month'),
+            moment().subtract(1, 'month').endOf('month')
+        ]
+    },
+  "locale": {
+        "format": "DD-MM-YYYY",
+        "separator": " עד ",
+        "applyLabel": "אישור",
+        "cancelLabel": "ביטול",
+        "fromLabel": "מ",
+        "toLabel": "עד",
+        "customRangeLabel": "מותאם אישית",
+        "daysOfWeek": ["א","ב","ג","ד","ה","ו","שבת"],
+        "monthNames": ["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],
+    },
+      "showDropdowns": true
+  });
+
+
+$("#showReport").click(function (){
+   
+  var startDate = $("#daterange").val().slice(0,10);
+  var endDate =   $("#daterange").val().slice(14);
+
+  $.get("index.php?section=reports&action=<?= $method ?>",
+        {
+            startDate:dateFormat(startDate),
+            endDate:dateFormat(endDate)
+      
+        },
+         function (data, status) {
+
+           data = JSON.parse(data);
+            
+          for (i=0 ;i<data.length ; i++)
+          {  
+
+              $("tbody").prepend("<tr><td>"+(data.length-i)+"</td><td>"+data[i].id+"</td><td>"+data[i].firstName+"</td><td>"+data[i].lastName+"</td><td>"+data[i].dateStart+"</td><td>"+data[i].dateEnd+"</td></tr>");
+
+
+          }
+                    $("h2 small").html($(".breadcrumb .active").text()+"<br>"+startDate+" עד "+endDate);
+                 $('#report').modal('show') 
+       
+         });   
+
+$('#report').on('hidden.bs.modal', function (e) {
+   $("tbody").html("");
+})
+
+
+});
+
+
+
+function dateFormat(date)
+{
+  date = date.split("-");
+
+ var day =date[0];
+ var month =date[1];
+ var year =date[2];
+
+ return year+"-"+month+"-"+day;
+
+}
+
+});
+
+
+
+</script>
+
+<style type="text/css">
+
+   @media print
+   {
+    #sideBar , .panel,  .modal-footer, .close{
+     display: none;
+    }
+
+   }
+
+</style>

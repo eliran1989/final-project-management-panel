@@ -1,0 +1,88 @@
+<script src="views/reports/subs/javascript/Chart.min.js"></script>
+<script src="views/reports/subs/javascript/ageBreakdown.js"></script>
+
+
+
+<div class="col-md-10">
+<div class="panel panel-default">
+   <div class="panel-heading">
+    <h3 class="text-center">  <?php echo $reportName ?></h3>
+    <ul class="breadcrumb" style="background:none; padding:0px; margin:0px;">
+  <li><a href="index.php?section=reports">דוחות</a></li>
+  <li><a href="index.php?section=reports&action=reportsSubsMain"><?php echo $category ?></a></li>
+  <li class="active"> <?php echo $reportName ?></li>
+</ul>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+		<div class="col-xs-5 col-md-2 col-md-offset-2">
+		<ul class="list-group">
+  			<li class="list-group-item">
+  				<span id="label1" class="badge"></span>
+  				גילאי 14-20
+  			</li>
+ 			 <li class="list-group-item">
+ 			 	<span class="badge" id="label2"></span>
+ 			 	גילאי 21-30
+  			</li>
+  			<li class="list-group-item">
+  				<span class="badge" id="label3"></span>
+  			 	גילאי 31-40
+  			</li>
+  			 <li class="list-group-item">
+  			 	גילאי 41-50
+         <div class="badge" id="label4"></div>
+  			</li>
+  			 <li class="list-group-item">
+  			 	גילאי 50 ומעלה
+          <span class="badge" id="label5"></span>
+  			</li>
+		</ul>
+
+
+		</div>
+  		<div class="col-md-3">
+			<canvas id="agesBreakDown" width="auto" height="300"></canvas>
+		</div>
+</div>
+
+<button class="btn btn-default" id="print" onClick="window.print()"><span class="glyphicon glyphicon-print"></span></button>
+  </div>
+</div>
+</div> 
+
+
+<style type="text/css">
+
+.panel-heading h3
+{
+  display: none;
+}
+
+
+#label1{background-color:#F7464A !important;color:white !important; }
+#label2{background-color:#46BFBD !important;color:white !important; }
+#label3{background-color:#FDB45C !important;color:white !important; }
+#label4{background-color:#949FB1 !important;color:white !important; }
+#label5{background-color:#4D5360 !important;color:white !important; }
+
+
+   @media print
+   {
+    #sideBar ,#print, .breadcrumb{
+     display: none;}
+     .panel-heading h3{
+      display: block;
+     }
+
+      .list-group{
+        margin-top:50px;
+      }
+    
+    }
+
+
+
+</style>
+
+

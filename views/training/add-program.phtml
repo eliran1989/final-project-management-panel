@@ -1,0 +1,153 @@
+<script src="views/training/js/add-program.js"></script>
+
+<div class="col-md-10">
+<form class="form-horizontal" method="post" action="index.php?section=training&action=showSubPrograms&id=<?php echo $sub['id']?>&firstName=<?php echo $sub['firstName'] ?>&lastName=<?php echo $sub['lastName']?>">
+  <fieldset>
+  <legend><h3>יצירת תוכנית אימון <small><?php echo $sub['firstName']." ".$sub['lastName'];?></small></h3></legend>
+
+   <div class="form-group">
+      <label for="purpose" class="col-md-2 col-md-offset-1 control-label">מטרה:</label>
+      <div class="col-md-3">
+ 		 <select name="purpose" class="form-control">
+ 			 <option value="חיטוב">חיטוב</option>
+  			 <option value="עליה במסה">עליה במסה</option>
+  			 <option value="שריפת שומן">שריפת שומן</option>
+  			 <option value="הורדה במשקל">הורדה במשקל</option>
+  			 <option value="other">אחר</option>
+         </select>
+      </div>
+
+      <div class="col-md-3">
+        <input class="form-control" type="text" name="other_purpose" placeholder="אחר" disabled="" required> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="trainingType" class="col-md-2 col-md-offset-1 control-label">סוג:</label>
+      <div class="col-md-3">
+ 		 <select name="trainingType" class="form-control">
+ 			 <option value="AB">AB</option>
+  			 <option value="ABC">ABC</option>
+  			 <option value="ABCD">ABCD</option>
+         </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="time" class="col-md-2 col-md-offset-1 control-label">משך התוכנית:</label>
+      <div class="col-md-3">
+     <select name="training_lenght" class="form-control">
+         <option value="2">חודשיים</option>
+         <option value="3">שלושה חודשים</option>
+         <option value="6">חצי שנה</option>
+         <option value="12">שנה</option>
+         </select>
+      </div>
+    </div>
+
+
+<div id="training" class="row">
+  <div class="col-md-offset-2 col-md-7">
+ 	<div class="panel panel-info">
+       <div class="panel-heading">אימון A</div>
+           <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th class="col-xs-3">שריר</th>
+                   <th class="col-xs-5">תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                   <td class="col-xs-3">
+                      <select name="A_muscle_1" class="form-control muscles" required>
+                      <option value="" display selected style='display:none;'></option>
+                      </select>
+     		          </td>
+                  <td class="col-md-5">
+                      <select name="A_exercise_1" class="form-control exercises" disabled="" required>
+                      <option value="" display selected style='display:none;'></option>
+                      </select>
+     		          </td>
+                 	<td><input name="A_sets_1" class="form-control" type="text" required></td>
+                 	<td><input name="A_repeated_1" class="form-control" type="text" required></td>
+                  </tr>
+                </tbody>
+              </table> 
+				<div class="btn-group btn-group-justified">
+  					<a class="btn btn-default plusBtn"><span class="glyphicon glyphicon-plus"></span></a>
+  					<a class="btn btn-default minusBtn disabled"><span class="glyphicon glyphicon-minus"></span></a>
+				</div>
+           </div>
+      <!--<div class="panel-footer">
+        <textarea class="form-control" name="A_note" rows="1" placeholder="הערות"></textarea></div>-->
+    </div>
+  </div>
+
+
+
+
+  <div class="col-md-offset-2 col-md-7">
+ 	<div class="panel panel-info">
+       <div class="panel-heading">אימון B</div>
+           <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                 <tr>
+                  <th>#</th>
+                   <th>שריר</th>
+                   <th class="col-md-5">תרגיל</th>
+                   <th>מס' סטים</th>
+                   <th>מס' חזרות</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>1</td>
+                   <td class="col-md-3">
+                        <select name="B_muscle_1" class="form-control muscles" required >
+                      <option value="" display selected style='display:none;'></option>
+                        </select>
+     		       </td>
+                  <td class="col-md-3">
+                        <select name="B_exercise_1" class="form-control exercises" disabled="" required>
+                        <option value="" display selected style='display:none;'></option>
+                        </select>
+     		       </td>
+                 	<td><input name="B_sets_1" class="form-control" type="text" required></td>
+                 	<td><input name="B_repeated_1" class="form-control" type="text" required></td>
+                  </tr>
+                </tbody>
+              </table> 
+				<div class="btn-group btn-group-justified">
+  					<a class="btn btn-default plusBtn"><span class="glyphicon glyphicon-plus"></span></a>
+  					<a class="btn btn-default minusBtn disabled"><span class="glyphicon glyphicon-minus"></span></a>
+				</div>
+           </div>
+
+   <!--<div class="panel-footer">
+        <textarea class="form-control" name="B_note" rows="1" placeholder="הערות"></textarea></div>-->
+    </div>
+</div>
+</div>
+
+
+    <div class="form-group">
+      <label for="textArea" class="col-md-3 control-label">הערות:</label>
+      <div class="col-md-6">
+        <textarea class="form-control" name="note" rows="2" ></textarea>
+      </div>
+
+
+<input type="submit" class="btn btn-info" value="יצירת תוכנית">
+
+</fieldset>
+</form>
+
+
+
+</div>

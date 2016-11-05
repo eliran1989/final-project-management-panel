@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default col-md-10">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">בית</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">סטודיו</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     <ul class="nav navbar-nav">
+        <li><a href="#" data-toggle="modal" data-target="#newStudio"><span class="glyphicon glyphicon-plus"></span> הוספת סטודיו</a></li>
+      </ul>
+
+        <form class="navbar-form navbar-left" role="search" method="get">
+        <div class="form-group">
+            <input type="hidden" name="section" value="subs" /> 
+            <input type="hidden" name="action" value="search" /> 
+            <div class="input-group">
+             <input type="text" class="form-control" name="query" placeholder="הקלד שם או תעדות זהות" required>
+                 <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> חיפוש מנוי</button>
+                </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+

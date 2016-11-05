@@ -1,0 +1,152 @@
+<nav class="navbar navbar-default col-md-10">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">מנויים</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">מנויים</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#" data-toggle="modal" data-target="#newSubModal"><span class="glyphicon glyphicon-plus"></span> רישום מנוי חדש</a></li>
+      </ul>
+        <form class="navbar-form navbar-left" role="search" method="get">
+        <div class="form-group">
+            <input type="hidden" name="section" value="subs" /> 
+            <input type="hidden" name="action" value="search" /> 
+            <div class="input-group">
+             <input type="text" class="form-control" name="query"placeholder="הקלד שם או תעדות זהות" required>
+                 <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> חיפוש מנוי</button>
+                </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="modal animated fadeIn" id="newSubModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">רישום מנוי חדש</h4>
+      </div>
+      <div class="modal-body">
+<form class="form-group-sm" id="newSubForm" method="post">
+        <div class="row">
+      <div class="form-group col-md-4">
+           <label for="id" class="control-label" >תעודת זהות:</label>
+            <input type="text" id="id" class="form-control" name="id" maxlength="9" required pattern="^[0-9]*$">
+            </div>
+
+        <div class="form-group col-md-2">
+           <label for="id" class="control-label" ></label>
+           <div class="radio">
+             <label class="radio-inline">
+            <input type="radio" name="sex" value="ז" required>
+             ז
+          </label>
+             <label class="radio-inline">
+            <input type="radio" name="sex" value="נ" required>
+             נ
+          </label>
+        </div>
+        </div>     
+        
+ 			<div class="form-group col-md-6">
+            <label for="firstName" class="control-label" >שם פרטי:</label>
+            <input type="text"  id="firstName" class="form-control" name="firstName" maxlength="20" required>
+            </div>
+		</div>
+        
+       <div class="row">  
+             <div class="form-group col-md-6">
+            <label for="lastName" class="control-label" >שם משפחה:</label>
+            <input type="text" id="lastName"  name="lastName" class="form-control" maxlength="20" required>
+            </div>
+       
+ 			<div class="form-group col-md-6">
+            <label for="birthDate"  class="control-label" >תאריך לידה:</label>
+            <input type="text" id="birthDate" class="form-control" name="birthDate" required>
+            </div>
+		</div>
+        
+        
+        <div class="row">
+                    
+             <div class="form-group col-md-6">
+            <label for="address" class="control-label" >כתובת:</label>
+            <input type="text" id="address" name="address" class="form-control" maxlength="50" required>
+            </div>
+        
+  		<div class="form-group col-md-6">
+          <label for="email" class="control-label" >אימייל</label>
+            <input type="email" id="email" class="form-control" name="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" title="יש להזין אימייל על פי הדוגמא: example@example.com" >
+      </div>
+  
+        </div>
+
+        
+        
+            <div class="row">
+            
+  			<div class="form-group col-md-6">
+          <label for="tel" class="control-label" >מספר פלאפון</label>
+            <input type="tel"  name="tel" class="form-control"  required pattern="^0?(5[024])(\-)?\d{7}$" >
+        </div>
+            
+  			<div class="form-group col-md-6">
+            <label class="control-label" >אורך המנוי</label>
+            <select name="subscribe" id="subscribe" class="form-control" placeholder="מנוי ל-" required>
+                    <option value="" display selected style='display:none;'> מנוי ל-</option>
+                    <option value="1">חודש</option>
+                    <option value="2">חודשיים</option>
+                    <option value="3">שלושה חודשים</option>
+                     <option value="6">חצי שנה</option>
+                     <option value="12">שנה</option>
+                </select>
+		   </div>
+
+       <input type="hidden" name="postFunction" value="addNewSub">
+            
+        </div>
+        <input type="submit" id="submit-form" class="hidden" />
+  </form> 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ביטול</button>
+        <label for="submit-form" class="btn btn-primary">אישור</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="subDetails">
+<?php include("views/subs/subDetails.html") ?>
+</div>
+
+
+
+  <script type="text/javascript">
+
+
+ $("#birthDate").daterangepicker({
+  "autoApply": true, 
+  "opens": "center",
+  singleDatePicker: true,
+  "startDate": moment().subtract(14, 'year'),
+    "locale": {"format": "DD-MM-YYYY"},
+    "maxDate": moment().subtract(14, 'year'),
+    "showDropdowns": true
+  });
+
+
+  </script>

@@ -1,0 +1,264 @@
+<div class="modal animated fadeIn" id="newStudio">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">הוספת שיעור סטודיו</h4>
+      </div>
+      <div class="modal-body">
+         <form class="form-horizontal" id="studioForm" method="post">
+                    <div class="form-group row">
+                    <div class="col-md-offset-3 col-md-6">
+                      <label for="name" class="control-label">שם השיעור:</label>
+                        <input type="text" id="name" name="name" class="form-control input-sm" required>
+                        </div>
+                    </div>
+                  <div class="form-group row">
+                  <div class="col-md-offset-3 col-md-6">
+                      <label class="control-label" >מדריך:</label>
+                          <select name="trainer"  class="form-control input-sm" required>
+                              <option value="" display selected style='display:none;'>בחר מהרשימה</option>
+                                  <?php 
+
+                              foreach ($trainersList as $key => $value) {
+                               echo '<option value="'.$value['id'].'">'.$value['firstName'].' '.$value['lastName'].'</option>';
+                                }
+
+                                  ?>
+                              </select>
+                              </div>
+                     </div>
+                      <div class="form-group row">
+                      <div class="col-md-offset-3 col-md-6">
+                      <label class="control-label" >קטגוריה:</label>
+                          <select name="catId"  class="form-control input-sm" required>
+                              <option value="" display selected style='display:none;'>בחר מהרשימה</option>
+                                  <?php 
+
+                              foreach ($catList as $key => $value) {
+                               echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                                }
+
+                                  ?>
+                              </select>
+                              </div>
+                     </div>
+                  <div class="form-group row">
+                  <div class="col-md-offset-3 col-md-6">
+                    <label class="control-label">ימים בשבוע:</label>
+                    <div class="options">
+                   <label for="day1" class="control-label">א</label>
+                   <input type="checkbox" data-day="א" value="ראשון" name="day1" required>
+                  <label for="day2" class="control-label">ב</label>
+                  <input type="checkbox" data-day="ב" value="שני" name="day2" required>
+                   <label for="day3" class="control-label">ג</label>
+                   <input type="checkbox" data-day="ג" value="שלישי" name="day3" required>
+                    <label for="day4" class="control-label">ד</label>
+                   <input type="checkbox" data-day="ד" value="רביעי" name="day4" required>
+                    <label for="day5"  class="control-label">ה</label>
+                   <input type="checkbox" data-day="ה" value="חמישי" name="day5" required>
+                   <label for="day6" class="control-label">ו</label>
+                   <input type="checkbox"  data-day="ו" value="שישי" name="day6" required>
+                    <label for="day7" class="control-label">ש</label>
+                   <input type="checkbox"  data-day="ש" value="שבת" name="day7" required>
+                    </div>
+                    </div>
+                  </div>
+
+              <input type="hidden" name="postFunction" value="addStudio">
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+        <input type="submit" class="btn btn-primary" form="studioForm" value="הוספת שיעור">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-md-10">
+
+
+
+  <div class="row">
+    <?php  foreach ($catList as $key => $cat) { ?>
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <?=  $cat['name']  ?>
+  </div>
+  <div class="panel-body">
+  <ul class="list-group">
+    <?php  
+        foreach ($studioLessons as $key => $studio) {
+
+              if ($studio->getCatId()==$cat['id'])
+              {
+
+         ?>
+            
+               
+            <li class="list-group-item text-center">
+           <?php
+                echo $studio->getName();
+
+           ?>
+            <span class="badge studioBtn" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-down"></span></span>
+            </li>
+
+            <div class="well well-sm studioDetails animated fadeIn" style="margin-bottom:1px; display:none;" >
+
+
+    <?php 
+
+
+                foreach ($trainersList as $key => $trainer) {
+                  if ($trainer['id']==$studio->getTrainerId())
+                    echo "<h5 class='text-center'>מדריך: ".$trainer['firstName']." ".$trainer['lastName']."</h5><hr>";
+                }
+
+      ?>
+         <form class="form-horizontal" id="studioForm" method="post">
+         <table class="table table-striped">
+           <thead>
+          <tr>
+            <th class="text-center">יום</th>
+            <th class="text-center">שעה</th>
+         </tr>
+        </thead>
+        <tbody>
+      <?php
+
+
+     foreach ($studio->getLessons() as $key => $lesson) { 
+                 
+                  if ($studio->getStudioId()==$lesson->getStudioId()){
+                   ?>
+                   
+                   
+              <tr>
+                <td class="text-center">
+                   <?= $lesson->getDay();?>
+                </td>
+                <td class="text-center">
+                    <?= $lesson->getTime();?>
+                </td>
+                </tr>  
+
+
+                   
+
+
+
+                   <?php     
+
+
+
+
+
+                    } 
+                  }
+
+                echo " </tbody></table></form></div>";  
+               }
+
+             }
+
+        ?>
+
+      </ul>
+  </div>
+</div>
+</div>
+
+<?php  }   ?>
+</div>
+
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+  
+
+
+
+
+$(document).ready(function () {
+
+
+  $("#studioForm input[type='checkbox']").click(function (){
+
+
+       if ($(this).is(':checked'))
+       { 
+            $("#studioForm").append('<div class="form-group row"><div class="col-md-offset-3 col-md-2"><label for="name" data-checkId="'+$(this).val()+'" class="control-label">יום '+$(this).data('day')+':</label></div><div class="col-md-3"><input type="time" name="time_'+$(this).attr('name')+'"class="form-control input-sm" required></div></div>');
+        }
+        else
+        {
+
+          $( "*[data-checkId='"+$(this).val()+"']" ).parent().parent().remove();
+
+        }
+    });
+
+
+    var requiredCheckboxes = $('.options :checkbox[required]');
+    requiredCheckboxes.change(function(){
+        if(requiredCheckboxes.is(':checked')) {
+            requiredCheckboxes.removeAttr('required');
+        } else {
+            requiredCheckboxes.attr('required', 'required');
+        }
+    });
+
+
+
+    $(".studioBtn").click(function(){
+
+      var studioDetails = $(this).parent().next(".studioDetails");
+      var animationIn = "fadeIn";
+      var animationOut ="fadeOut";
+
+        
+
+        if (studioDetails.hasClass(animationIn))
+        {
+           studioDetails.show();
+           studioDetails.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                studioDetails.removeClass(animationIn);
+           });
+            $(this).children().removeClass("glyphicon-chevron-down");
+              $(this).children().addClass("glyphicon-chevron-up");
+        }
+         else
+        {
+           studioDetails.addClass(animationOut);
+           studioDetails.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                studioDetails.removeClass(animationOut);
+                studioDetails.addClass(animationIn);
+                studioDetails.hide("fast");
+
+
+           });
+              $(this).children().removeClass("glyphicon-chevron-up");
+              $(this).children().addClass("glyphicon-chevron-down");
+
+        }
+
+
+    });
+
+
+});
+
+
+
+
+
+
+</script>

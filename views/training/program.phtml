@@ -1,0 +1,256 @@
+  <img src="loader.gif" id="loader" style="position: fixed;margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;">
+
+<div class="col-md-10" style="display:none;">
+<div class="panel panel-info">
+  <div class="panel-body">
+    <div class="col-md-1">
+      <button class="btn btn-default" title="הדפס" onClick="window.print()"><span class="glyphicon glyphicon-print"></span></button>
+    </div>
+    <div class="col-md-3 col-md-offset-1">
+   <strong>מנוי:</strong> <?php echo $_GET['firstName']." ".$_GET['lastName'];?>
+    </div>
+    <div class="col-md-3">
+      <strong>נוצר בתאריך: </strong> <?php echo $dateCreate->format("d-m-Y"); ?>
+    </div>
+    <div class="col-md-3">
+      <strong>נוצר על ידי: </strong><?php echo $createBy; ?>
+    </div>
+        <div class="col-md-offset-1">
+      <button class="btn btn-default" title="עריכה" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-edit"></span></button>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-body">
+   <div class="col-md-8 col-md-offset-2">
+      <h5><strong>הערות:</strong></h5>
+      <div class="well well-sm">
+    <p>משך התוכנית - 
+<?php
+
+echo $programLength;
+
+echo "</p>";
+
+if ($note!="")
+{
+echo '<p>'.nl2br($note).'</p>';
+}
+
+?>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-md-6 training">
+<div class="panel panel-info">
+  <div class="panel-heading text-center"><strong>אימון A</strong></div>
+  <div class="panel-body">
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>שריר</th>
+      <th class="col-md-6">תרגיל</th>
+      <th>מס' סטים</th>
+      <th>מס' חזרות</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <?php 
+
+      for ($i=0 ; $i<count($A);$i++)
+      {
+          echo "<tr><td>".($i+1)."</td><td>".$A[$i]['muscle']."</td><td>".$A[$i]['exercise']."</td><td>".$A[$i]['sets']."</td><td>".$A[$i]['repeats']."</td></tr>";
+
+
+      }
+
+
+
+    ?> 
+
+
+
+  </tbody>
+</table>
+  </div>
+</div>
+</div>
+
+
+
+<div class="col-md-6 training">
+<div class="panel panel-info">
+  <div class="panel-heading text-center"><strong>אימון B</strong></div>
+  <div class="panel-body">
+
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>שריר</th>
+      <th class="col-md-6">תרגיל</th>
+      <th>מס' סטים</th>
+      <th>מס' חזרות</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <?php 
+
+      for ($i=0 ; $i<count($B);$i++)
+      {
+          echo "<tr><td>".($i+1)."</td><td>".$B[$i]['muscle']."</td><td>".$B[$i]['exercise']."</td><td>".$B[$i]['sets']."</td><td>".$B[$i]['repeats']."</td></tr>";
+
+
+      }
+
+
+
+    ?> 
+
+
+
+  </tbody>
+</table>
+
+
+
+
+  </div>
+</div>
+</div>
+
+<?php 
+
+  if (isset($C))
+    {
+        echo "<div class='col-md-6 training'>
+        <div class='panel panel-info'>
+          <div class='panel-heading text-center'><strong>אימון C</strong></div>
+            <div class='panel-body'>
+              <table class='table table-striped'>
+                <thead>
+                  <tr>
+                  <th>#</th>
+                  <th>שריר</th>
+                  <th class='col-md-6'>תרגיל</th>
+                  <th>מס' סטים</th>
+                  <th>מס חזרות</th>
+                  </tr>
+                </thead>
+                <tbody>";
+
+      for ($i=0 ; $i<count($C);$i++)
+      {
+          echo "<tr><td>".($i+1)."</td><td>".$C[$i]['muscle']."</td><td>".$C[$i]['exercise']."</td><td>".$C[$i]['sets']."</td><td>".$C[$i]['repeats']."</td></tr>";
+
+
+      }
+
+
+                echo "</tbody>
+              </table>
+           </div>
+         </div>
+        </div>";
+    }
+
+
+  if (isset($D))
+    {
+        echo "<div class='col-md-6 training'>
+        <div class='panel panel-info'>
+          <div class='panel-heading text-center'><strong>אימון D</strong></div>
+            <div class='panel-body'>
+              <table class='table table-striped'>
+                <thead>
+                  <tr>
+                  <th>#</th>
+                  <th>שריר</th>
+                  <th class='col-md-6'>תרגיל</th>
+                  <th>מס' סטים</th>
+                  <th>מס חזרות</th>
+                  </tr>
+                </thead>
+                <tbody>";
+
+      for ($i=0 ; $i<count($D);$i++)
+      {
+          echo "<tr><td>".($i+1)."</td><td>".$D[$i]['muscle']."</td><td>".$D[$i]['exercise']."</td><td>".$D[$i]['sets']."</td><td>".$D[$i]['repeats']."</td></tr>";
+
+
+      }
+
+                
+                
+
+                echo "</tbody>
+              </table>
+           </div>
+         </div>
+        </div>";
+    }
+
+
+
+
+?>
+
+
+
+</div>
+
+
+
+
+
+<script src="views/training/js/edit-program.js"></script>
+
+
+
+<script type="text/javascript">
+
+  $(window).load(function() {
+    $(".col-md-10").fadeIn("slow");
+    $("#loader").fadeOut("slow");
+  });
+
+</script>
+
+
+
+<style type="text/css">
+
+   @media print
+   {
+    #sideBar , .btn{
+     display: none;
+    }
+
+    @page {size: landscape}
+
+    .training{page-break-after: always;}
+
+
+   }
+
+
+
+
+
+
+</style>

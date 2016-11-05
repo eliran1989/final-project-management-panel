@@ -1,0 +1,17 @@
+  <script type="text/javascript">
+$(document).ready(function () {
+
+	$("#alertMsg").modal("show");
+	setTimeout(function(){$("#alertMsg").modal("hide");},3000);
+});
+
+</script>
+
+<div class="modal" id="alertMsg"  style="display:block;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body alert alert-dismissible alert-<?php echo $alert; ?> text-center text-center">
+          <button type="button" class="close" data-dismiss="modal">×</button><span class="<?php echo $icon ?>"></span> <?php echo $msg; ?></div>
+        </div>
+    </div>
+  </div>
+
