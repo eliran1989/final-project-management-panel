@@ -55,6 +55,13 @@
         }
 
 
+        public function getStudioBySub(){
+
+            $this->model->getStudioBySub($_POST['subId']);
+
+        }
+
+
 
         private function checkIfPost(){
        #Check if http request is post and executed the model function  accordingly.

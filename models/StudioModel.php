@@ -42,6 +42,22 @@ class StudioModel extends Model
 		}
 
 
+
+		public function getStudioBySub($subId){
+
+			$q="SELECT `studioId` FROM `subs_studios` WHERE '$subId'=`subId`";
+
+			$result = $this->db->query($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				echo $row['studioId'];
+
+			}
+
+
+		}
+
 		public function getStudioLessons(){
 
 
