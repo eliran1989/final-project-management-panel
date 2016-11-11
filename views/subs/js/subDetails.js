@@ -8,28 +8,31 @@ $("#subDetails").load("views/subs/subDetails.html");
 });  
 
 
+
  $(".showSubDetails").click(function () {
         $.post("index.php?section=subs&action=showSubDetails",
         {
             id: $(this).attr('id')
         },
          function (data, status) {
-             var data =JSON.parse(data);
-             var icon ='<span class="glyphicon glyphicon-list-alt"></span> ';
+                 var data =JSON.parse(data);
+                 var icon ='<span class="glyphicon glyphicon-list-alt"></span> ';
 
+             //check if subscriber is active and active/disabled tabs
              if (data['active']){
-             var status = '<td><span class="label label-success">פעיל</span></td>';
-             $( 'a[href*="#updateReg"]' ).parent().addClass("disabled");
-             $( 'a[href*="#updateReg"]' ).removeAttr("data-toggle"); 
-            $( 'a[href*="#updateReg"]' ).removeAttr("href"); 
-             activaTab("profile");
+                 var status = '<td><span class="label label-success">פעיל</span></td>';
+                 disableTab("updateReg");
+                 showTab("profile");
              }
              else{
-             var status = '<td><span class="label label-danger">לא פעיל</span></td>';
-             activaTab("updateReg");
-             $("#updateRegForm input[name='id']").val(data['id'])
+                 var status = '<td><span class="label label-danger">לא פעיל</span></td>';
+                 showTab("updateReg");
+                 disableTab("registerStudio");
+                 $("#updateRegForm input[name='id']").val(data['id'])
              }
-             $("#subName").html(icon+data["firstName"]+" "+data["lastName"]+"<div><small>"+data["id"]+"<br>"+status+"</small></div>");
+
+
+                $("#subName").html(icon+data["firstName"]+" "+data["lastName"]+"<div><small>"+data["id"]+"<br>"+status+"</small></div>");
 
              $("#detailsUpdate input").each(function (){
 
@@ -105,9 +108,18 @@ $("#updateBtn").click(function(){
 
 
 
-function activaTab(tab){
+function showTab(tab){
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
 };
+
+
+function disableTab(tab){
+
+    $( 'a[href*="#'+tab+'"]' ).parent().addClass("disabled");
+    $( 'a[href*="#'+tab+'"]' ).removeAttr("data-toggle"); 
+    $( 'a[href*="#'+tab+'"]' ).removeAttr("href"); 
+
+}
 
 
 });
