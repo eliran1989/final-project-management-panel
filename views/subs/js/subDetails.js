@@ -31,7 +31,6 @@ $("#subDetails").load("views/subs/subDetails.html");
                  $("#updateRegForm input[name='id']").val(data['id'])
              }
 
-
                 $("#subName").html(icon+data["firstName"]+" "+data["lastName"]+"<div><small>"+data["id"]+"<br>"+status+"</small></div>");
 
              $("#detailsUpdate input").each(function (){
