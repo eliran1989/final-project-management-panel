@@ -57,9 +57,9 @@ class StudioModel extends Model
 
 
 
-				$result2 = $this->db->query($q);
+				$res = $this->db->query($q);
 
-				while($studio = $result2->fetch_array(MYSQLI_ASSOC)){
+				while($studio = $res->fetch_array(MYSQLI_ASSOC)){
 					$studioNames[] = $studio['lesson_name'];
 
 				}
