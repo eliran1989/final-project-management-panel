@@ -49,11 +49,28 @@ class StudioModel extends Model
 
 			$result = $this->db->query($q);
 
-			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+			$studioNames = array();
 
-				echo $row['studioId'];
+			while($studioId = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$q="SELECT `lesson_name`  FROM `studio_lessons` WHERE '$studioId[studioId]'=`id`";
+
+
+
+				$result2 = $this->db->query($q);
+
+				while($studio = $result2->fetch_array(MYSQLI_ASSOC)){
+					$studioNames[] = $studio['lesson_name'];
+
+				}
 
 			}
+
+			return $studioNames;
+
+			
+
+
 
 
 		}

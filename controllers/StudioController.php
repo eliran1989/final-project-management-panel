@@ -57,7 +57,7 @@
 
         public function getStudioBySub(){
 
-            $this->model->getStudioBySub($_POST['subId']);
+           $this->view->echoJson($this->model->getStudioBySub($_POST['id']));
 
         }
 

@@ -10,11 +10,11 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
  $(".showSubDetails").click(function () {
-        $.post("index.php?section=subs&action=showSubDetails",
-        {
+        $.post("index.php?section=subs&action=showSubDetails",{
+
             id: $(this).attr('id')
-        },
-         function (data, status) {
+
+        }, function (data, status) {
                  var data =JSON.parse(data);
                  var icon ='<span class="glyphicon glyphicon-list-alt"></span> ';
 
@@ -60,6 +60,45 @@ $("#subDetails").load("views/subs/subDetails.html");
              $("#subDetails .modal").modal("show");
              
          });
+
+
+    $.post("index.php?section=studio&action=getStudioBySub",{
+
+        id: $(this).attr('id')
+
+
+    }, function (data, status){
+
+           var data =JSON.parse(data);
+
+           if (data.length == 0 )
+           {
+            $("#registerStudio .well").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
+           }
+           else{
+            debugger;
+
+            $("#registerStudio .well").html("<strong>שיעורי סטודיו פעילים: </strong>");
+
+             for (i=0 ;i<data.length ;i++){
+
+                if (i==0){
+                     $("#registerStudio .well").append(data[i]);
+                }else
+                {
+                    $("#registerStudio .well").append(", "+data[i]);
+                }
+
+                 
+
+             }
+
+           }
+
+    });
+
+
+
 
 
 
