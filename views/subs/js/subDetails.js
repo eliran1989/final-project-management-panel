@@ -76,7 +76,6 @@ $("#subDetails").load("views/subs/subDetails.html");
             $("#registerStudio .well").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
            }
            else{
-            debugger;
 
             $("#registerStudio .well").html("<strong>שיעורי סטודיו פעילים: </strong>");
 
