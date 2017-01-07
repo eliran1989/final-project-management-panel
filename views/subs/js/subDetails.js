@@ -99,10 +99,34 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
 
+    $.post("index.php?section=studio&action=getStudioList",{
+
+
+    }, function (data, status){
+
+           var data =JSON.parse(data);
+
+           alert(data);
 
 
 
     });
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+
+
+
 
 
 

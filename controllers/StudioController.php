@@ -62,6 +62,16 @@
         }
 
 
+        public function getStudioList(){
+
+
+         $category = $this->model->getCatList();
+          $this->view->echoJson($category);
+
+
+        }
+
+
 
         private function checkIfPost(){
        #Check if http request is post and executed the model function  accordingly.
