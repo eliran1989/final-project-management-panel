@@ -105,8 +105,12 @@ $("#subDetails").load("views/subs/subDetails.html");
     }, function (data, status){
 
            var data =JSON.parse(data);
+  
+           for (i=0 ; i<data.length ;i++){
+                $("#studio-list").append('<optgroup label = "'+data[i].name+'"></optgroup>');
+           }
 
-           alert(data);
+
 
 
 
