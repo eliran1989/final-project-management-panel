@@ -103,15 +103,19 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
     }, function (data, status){
-            debugger;
+
            var data =JSON.parse(data);
             $("#studio-list").empty();
 
+            debugger;
 
-           for (i=0 ; i<data.length ;i++){
-               $("#studio-list").append('<optgroup label = "'+data[i]+'"></optgroup>');
-             
-           }
+
+            for (var cat in data) {
+               $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
+      
+            }
+
+
 
   
     });
