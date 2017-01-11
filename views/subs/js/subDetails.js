@@ -57,7 +57,7 @@ $("#subDetails").load("views/subs/subDetails.html");
              });
 
 
-             $("#subDetails .modal").modal("show");
+
              
          });
 
@@ -103,28 +103,22 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
     }, function (data, status){
-
+            debugger;
            var data =JSON.parse(data);
-  
+            $("#studio-list").empty();
+
+
            for (i=0 ; i<data.length ;i++){
-                $("#studio-list").append('<optgroup label = "'+data[i].name+'"></optgroup>');
+               $("#studio-list").append('<optgroup label = "'+data[i]+'"></optgroup>');
+             
            }
 
-
-
-
-
+  
     });
 
+    $("#subDetails .modal").modal("show");
 
-
-
-
-
-
-
-
-
+       
 
     });
 

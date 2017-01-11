@@ -63,10 +63,15 @@
 
 
         public function getStudioList(){
+         $categories = $this->model->getCatList();
+         $studioList = array();
 
+         foreach ($categories as $key => $value) {
 
-         $category = $this->model->getCatList();
-          $this->view->echoJson($category);
+          $studioList[$value['name']] = $this->model->getStudioList($value['id']);
+         }
+
+          $this->view->echoJson($studioList);
 
 
         }

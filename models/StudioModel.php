@@ -43,6 +43,24 @@ class StudioModel extends Model
 
 
 
+		public function getStudioList($catId){
+
+			$q="SELECT * FROM `studio_lessons` WHERE `cat_id`='$catId'";
+
+			$result = $this->db->query($q);
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[]=$row;
+			}
+
+			return $rows;
+
+
+		}
+
+
+
 		public function getStudioBySub($subId){
 
 			$q="SELECT `studioId` FROM `subs_studios` WHERE '$subId'=`subId`";
