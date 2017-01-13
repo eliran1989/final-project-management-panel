@@ -107,14 +107,14 @@ $("#subDetails").load("views/subs/subDetails.html");
            var data =JSON.parse(data);
             $("#studio-list").empty();
 
-            debugger;
-
+            console.log(data);
 
             for (var cat in data) {
                $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
-      
-            }
 
+                for (i=0; i<data[cat].length ; i++) 
+                 $("#studio-list").append('<option value="'+data[cat][i].id+'">'+data[cat][i].lesson_name+'</option>');  
+            }
 
 
   
