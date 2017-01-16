@@ -23,6 +23,9 @@
         
     }
 
+
+
+
     
     
         public function setSectionTemplate()
@@ -72,6 +75,12 @@
          }
 
           $this->view->echoJson($studioList);
+
+
+        }
+
+
+        public function getLessonByStudioId ($studioId){
 
 
         }
