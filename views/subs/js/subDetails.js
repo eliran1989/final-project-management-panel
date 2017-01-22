@@ -73,7 +73,7 @@ $("#subDetails").load("views/subs/subDetails.html");
 
            if (data.length == 0 )
            {
-            $("#registerStudio .well").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
+            $("#currentStudios").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
            }
            else{
 
@@ -82,10 +82,10 @@ $("#subDetails").load("views/subs/subDetails.html");
              for (i=0 ;i<data.length ;i++){
 
                 if (i==0){
-                     $("#registerStudio .well").append(data[i]);
+                     $("#currentStudios").append(data[i]);
                 }else
                 {
-                    $("#registerStudio .well").append(", "+data[i]);
+                    $("#currentStudios").append(", "+data[i]);
                 }
 
                  
