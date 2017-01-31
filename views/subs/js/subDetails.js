@@ -77,7 +77,7 @@ $("#subDetails").load("views/subs/subDetails.html");
            }
            else{
 
-            $("#registerStudio .well").html("<strong>שיעורי סטודיו פעילים: </strong>");
+            $("#currentStudios").html("<strong>שיעורי סטודיו פעילים: </strong>");
 
              for (i=0 ;i<data.length ;i++){
 
@@ -106,7 +106,7 @@ $("#subDetails").load("views/subs/subDetails.html");
 
            var data =JSON.parse(data);
             $("#studio-list").empty();
-
+            $("#studio-list").append("<option value='' display selected style='display:none;'> רשימת שיעורים</option>");
             console.log(data);
 
             for (var cat in data) {
@@ -115,10 +115,13 @@ $("#subDetails").load("views/subs/subDetails.html");
                 for (i=0; i<data[cat].length ; i++) 
                  $("#studio-list").append('<option value="'+data[cat][i].id+'">'+data[cat][i].lesson_name+'</option>');  
             }
-
-
   
     });
+
+
+
+
+
 
     $("#subDetails .modal").modal("show");
 
@@ -129,7 +132,14 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
 
+    $("#studio-list").change(function(){
 
+
+        $("#lesson-time").fadeIn();
+
+
+
+    });
 
 
 
