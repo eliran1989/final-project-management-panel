@@ -112,8 +112,12 @@ $("#subDetails").load("views/subs/subDetails.html");
             for (var cat in data) {
                $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
 
-                for (i=0; i<data[cat].length ; i++) 
+                currentStudios = $("#currentStudios").text();
+
+                for (i=0; i<data[cat].length ; i++)
+                 if (!currentStudios.includes(data[cat][i].lesson_name))
                  $("#studio-list").append('<option value="'+data[cat][i].id+'">'+data[cat][i].lesson_name+'</option>');  
+
             }
   
     });
