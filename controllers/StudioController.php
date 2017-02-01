@@ -70,7 +70,6 @@
          $studioList = array();
 
          foreach ($categories as $key => $value) {
-
           $studioList[$value['name']] = $this->model->getStudioList($value['id']);
          }
 
@@ -80,8 +79,9 @@
         }
 
 
-        public function getLessonByStudioId ($studioId){
+        public function getLessonByStudioId (){
 
+            $this->view->echoJson($this->model->getLessonByStudioId($_POST['studioID']));
 
         }
 

@@ -93,6 +93,28 @@ class StudioModel extends Model
 
 		}
 
+
+
+		public function getLessonByStudioId ($studioId){
+
+			$q="SELECT `day`,`time` FROM `lesson` WHERE `studio_id`='$studioId'";
+			$result = $this->db->query($q);
+			$lessonArr =array();
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$lessonArr[]= $arrayName = array('day' => $row['day'], 'time'=>$row['time']);
+
+			}
+
+			return $lessonArr;
+ 
+        }
+
+
+
+
+
 		public function getStudioLessons(){
 
 
@@ -128,6 +150,8 @@ class StudioModel extends Model
 
 
 		}
+
+		
 
 
 

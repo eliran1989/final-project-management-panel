@@ -137,9 +137,29 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
     $("#studio-list").change(function(){
+        $("#lessons-time").empty();
+
+    $.post("index.php?section=studio&action=getLessonByStudioId",{
+        studioID: $(this).val()
+    }, function (data, status){
+
+           var data =JSON.parse(data);
+
+            for (i=0 ;i<data.length ;i++){
 
 
-        $("#lesson-time").fadeIn();
+                $("#lessons-time").append("<div class='row'>"+data[i].day+" "+data[i].time+"</div>")
+
+
+            }
+
+  
+    });
+
+
+
+
+        $("#lessons-time").fadeIn();
 
 
 
