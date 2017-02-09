@@ -137,7 +137,7 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
     $("#studio-list").change(function(){
-        $("#lessons-time").empty();
+        $("#lessons-time table tbody").empty();
 
     $.post("index.php?section=studio&action=getLessonByStudioId",{
         studioID: $(this).val()
@@ -148,8 +148,7 @@ $("#subDetails").load("views/subs/subDetails.html");
             for (i=0 ;i<data.length ;i++){
 
 
-                $("#lessons-time").append("<div class='row'>"+data[i].day+" "+data[i].time+"</div>")
-
+                $("#lessons-time table tbody").append("<tr><td class='text-center'>"+data[i].day+"</td><td class='text-center'>"+data[i].time+"</td></tr>");
 
             }
 
@@ -160,6 +159,7 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
         $("#lessons-time").fadeIn();
+        $("#btn-studio-register").fadeIn();
 
 
 

@@ -43,6 +43,17 @@ class StudioModel extends Model
 
 
 
+		public function registerSubToStudio(){
+
+
+				
+
+
+
+		}
+
+
+
 		public function getStudioList($catId){
 
 			$q="SELECT * FROM `studio_lessons` WHERE `cat_id`='$catId'";
