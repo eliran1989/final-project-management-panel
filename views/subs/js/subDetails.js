@@ -46,6 +46,7 @@ $("#subDetails").load("views/subs/subDetails.html");
                      "maxDate": moment().subtract(14, 'year'),
                      "locale": {"format": "DD-MM-YYYY"},
                      "startDate": data["birthDate"],
+                      "minDate": moment().subtract(70, 'year'),
                      "showDropdowns": true
                     });
 
@@ -70,7 +71,7 @@ $("#subDetails").load("views/subs/subDetails.html");
     }, function (data, status){
 
            var data =JSON.parse(data);
-
+           console.log(data);
            if (data.length == 0 )
            {
             $("#currentStudios").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
@@ -101,7 +102,6 @@ $("#subDetails").load("views/subs/subDetails.html");
            var data =JSON.parse(data);
             $("#studio-list").empty();
             $("#studio-list").append("<option value='' display selected style='display:none;'> רשימת שיעורים</option>");
-            console.log(data);
 
             for (var cat in data) {
                $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
