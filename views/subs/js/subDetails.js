@@ -80,13 +80,7 @@ $("#subDetails").load("views/subs/subDetails.html");
             $("#currentStudios").html("<strong>שיעורי סטודיו פעילים: </strong>");
 
              for (i=0 ;i<data.length ;i++){
-
-                if (i==0){
-                     $("#currentStudios").append(data[i]);
-                }else
-                {
-                    $("#currentStudios").append(", "+data[i]);
-                }
+                     $("#currentStudios").append(' <span class="label label-info" id="'+data[i]['id']+'"><span title="הסרה" class="removeBtn">&times;</span> '+data[i]['lesson']+'</div>');
 
                  
 
