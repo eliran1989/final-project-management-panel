@@ -45,8 +45,7 @@ class StudioModel extends Model
 
 		public function registerSubToStudio(){
 
-
-				
+			$q="INSERT INTO FROM `subs_studios`";
 
 
 

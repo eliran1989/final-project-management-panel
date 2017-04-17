@@ -36,6 +36,9 @@ class StudioView extends View
 		          case 'addStudio':
 		            $msg="שיעור הסטודיו נוסף בהצלחה";
 		            break;
+		           case 'registerSubToStudio':
+		            $msg = 'רישום המנוי לשיעור התבצע בהצלחה.';
+		            break;
 
 
 		          default:
