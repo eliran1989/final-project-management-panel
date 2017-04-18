@@ -45,8 +45,15 @@ class StudioModel extends Model
 
 		public function registerSubToStudio(){
 
-			$q="INSERT INTO FROM `subs_studios`";
 
+			$subID = htmlspecialchars($_POST['id']);
+			$studioID = htmlspecialchars($_POST['studio_id']);
+
+
+			$q="INSERT INTO `subs_studios` VALUES ('$subID', '$studioID')";
+
+			return $this->db->query($q);
+			
 
 
 		}

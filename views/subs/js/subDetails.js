@@ -17,10 +17,10 @@ $("#subDetails").load("views/subs/subDetails.html");
         }, function (data, status) {
                  var data =JSON.parse(data);
                  var icon ='<span class="glyphicon glyphicon-list-alt"></span> ';
-
              //check if subscriber is active and active/disabled tabs
              if (data['active']){
                  var status = '<td><span class="label label-success">פעיל</span></td>';
+                 $("#registerStudio input[name='id']").val(data['id'])
                  disableTab("updateReg");
                  showTab("profile");
              }
@@ -30,6 +30,7 @@ $("#subDetails").load("views/subs/subDetails.html");
                  disableTab("registerStudio");
                  $("#updateRegForm input[name='id']").val(data['id'])
              }
+
 
                 $("#subName").html(icon+data["firstName"]+" "+data["lastName"]+"<div><small>"+data["id"]+"<br>"+status+"</small></div>");
 
