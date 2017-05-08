@@ -1,6 +1,6 @@
 <?php
 	
-	if ($_SERVER['HTTP_HOST']=="127.0.0.1"){
+	if ($_SERVER['HTTP_HOST']=="127.0.0.1" || $_SERVER['HTTP_HOST']=="localhost"){
 	define('DB_HOST',"localhost");
 	define('DB_NAME', "spacegym");
 	define('DB_USER', "root");
