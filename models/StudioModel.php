@@ -168,6 +168,21 @@ class StudioModel extends Model
 
 		}
 
+
+		public function getRegsByStudio($id){
+
+		$q="SELECT `id` ,`firstName` , `lastName` FROM subscriptions INNER JOIN subs_studios ON subscriptions.id = subs_studios.subId AND subs_studios.studioId = '$id'";
+
+			$result = $this->db->query($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$subs[] = $row;
+			}
+
+			return $subs;
+			
+		}
+
 		
 
 

@@ -78,6 +78,10 @@
 
         }
 
+        public function getRegsByStudio(){
+            $this->view->echoJson($this->model->getRegsByStudio($_POST['studioId']));
+        }
+
 
         public function getLessonByStudioId (){
 

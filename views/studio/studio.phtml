@@ -1,14 +1,4 @@
 
-<style type="text/css">
-  
-.list-group-item:hover{
-  background-color: #D3F2FB;
-  cursor: pointer;
-}
-
-</style>
-
-
 
 <div class="modal" id="studioDetailsModal">
   <div class="modal-dialog">
@@ -23,16 +13,12 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>שם מנוי</th>
-            <th>תאריך רישום</th>
+            <th>שם פרטי</th>
+            <th>שם משפחה</th>
+            <th></th>
           </tr>
         </thead>
-        <tbody>
-
-          <tr><td>1</td><td>אלירן</td><td>אבוחצירה</td></tr>
-          <tr><td>1</td><td>אלירן</td><td>אבוחצירה</td></tr>
-          <tr><td>1</td><td>אלירן</td><td>אבוחצירה</td></tr>
-          <tr><td>1</td><td>אלירן</td><td>אבוחצירה</td></tr>
+        <tbody id="subsList">
 
         </tbody>
 
@@ -171,8 +157,9 @@
 
                 foreach ($trainersList as $key => $trainer) {
                   if ($trainer['id']==$studio->getTrainerId())
-                    echo "<h5 class='text-center'>מדריך: ".$trainer['firstName']." ".$trainer['lastName']."</h5><hr>";
+                    echo "<h5 class='text-center'>מדריך: ".$trainer['firstName']." ".$trainer['lastName']."</h5>";
                 }
+                echo "<div class='text-center showRegBtn' data-studio-id='".$studio->getStudioId()."'><a href='#'>מנויים רשומים</a></div><hr>"
 
       ?>
          <form class="form-horizontal" id="studioForm" method="post">
@@ -248,7 +235,26 @@ $(document).ready(function () {
 
 
 
- $(".list-group-item").click(function(){
+ $(".showRegBtn").click(function(){
+
+
+    $.post("index.php?section=studio&action=getRegsByStudio",{
+       studioId: $(this).data('studio-id')
+
+    }, function (data, status){
+
+           var data =JSON.parse(data);
+           $("#subsList").html("");
+
+           for (i=0; i<data.length ; i++){
+             $("#subsList").append("<tr id='"+data[i]['id']+"'><td>"+(i+1)+"</td><td>"+data[i]['firstName']+"</td><td>"+data[i]['lastName']+"</td><td><span class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td></tr>");
+           }
+  
+    });
+
+
+
+
 
 
 $("#studioDetailsModal").modal("show");
