@@ -236,29 +236,66 @@ $(document).ready(function () {
 
  $(".showRegBtn").click(function(){
 
+    $("#subsList").attr("data-studio-id" , $(this).data('studio-id'));
 
     $.post("index.php?section=studio&action=getRegsByStudio",{
        studioId: $(this).data('studio-id')
 
     }, function (data, status){
-
-           var data =JSON.parse(data);
+      
+            data =JSON.parse(data);
+            console.log(data);
+          if (data!=false){
            $("#subsList").html("");
 
            for (i=0; i<data.length ; i++){
-             $("#subsList").append("<tr id='"+data[i]['id']+"'><td>"+(i+1)+"</td><td>"+data[i]['firstName']+"</td><td>"+data[i]['lastName']+"</td><td><span class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td></tr>");
+             $("#subsList").append("<tr id='"+data[i]['id']+"'><td>"+(i+1)+"</td><td>"+data[i]['firstName']+"</td><td>"+data[i]['lastName']+"</td><td><span class='glyphicon glyphicon-remove-circle remove-sub' style='cursor:pointer' aria-hidden='true'></span></td></tr>");
            }
-  
+         }else{
+           $("#subsList").html("אין מנויים הרשומים לשיעור הסטודיו");
+
+         }
+
     });
-
-
-
 
 
 
 $("#studioDetailsModal").modal("show");
 
  })
+
+
+
+$("body").on("click" , ".remove-sub" , function(){
+
+  row = $(this).closest( $("tr"));
+
+if (confirm("האם להסיר את המנוי משיעורי הסטודיו?")){
+   
+    $.post("index.php?section=studio&action=removeSubFromStudio",{
+       studioId: $(this).closest( $("#subsList")).attr('data-studio-id'),
+       subId: $(this).closest( $("tr")).attr('id')
+
+    }, function (data, status){
+        if (data==1){
+          row.fadeOut();
+          setTimeout(function(){
+            row.remove();
+          }, 1000)
+          
+        }
+
+    });
+
+
+
+}
+
+})
+
+
+
+
 
 
 
@@ -338,7 +375,7 @@ $("#studioDetailsModal").modal("show");
 .arrow-up{
     animation-timing-function: linear;
     animation-name: arrow-change-up;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-fill-mode: forwards;
 }
 
@@ -354,7 +391,7 @@ $("#studioDetailsModal").modal("show");
 .arrow-down{
     animation-timing-function: linear;
     animation-name: arrow-change-down;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-direction: reverse;
 }
 

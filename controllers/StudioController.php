@@ -45,6 +45,8 @@
         }
 
 
+
+
         private function getCatList(){
 
          return $this->model->getCatList();
@@ -55,6 +57,14 @@
         private function getStudioLessons(){
 
               return $this->model->getStudioLessons();
+        }
+
+
+        public function removeSubFromStudio(){
+
+            $this->model->removeSubFromStudio($_POST['studioId'] , $_POST['subId']);
+
+
         }
 
 
@@ -79,7 +89,10 @@
         }
 
         public function getRegsByStudio(){
-            $this->view->echoJson($this->model->getRegsByStudio($_POST['studioId']));
+
+            $subs = $this->model->getRegsByStudio($_POST['studioId']);
+            $this->view->echoJson($subs);
+ 
         }
 
 

@@ -111,6 +111,16 @@ class StudioModel extends Model
 		}
 
 
+		public function removeSubFromStudio($studioId , $subId){
+
+			$q = "DELETE FROM `subs_studios` WHERE `studioId`='$studioId' AND `subId` ='$subId'";
+			$res = $this->db->query($q);
+
+			echo $res;
+
+		}
+
+
 
 		public function getLessonByStudioId ($studioId){
 
@@ -179,7 +189,10 @@ class StudioModel extends Model
 				$subs[] = $row;
 			}
 
+			if (isset($subs))
 			return $subs;
+			else
+			return FALSE;
 			
 		}
 
