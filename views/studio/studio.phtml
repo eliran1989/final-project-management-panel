@@ -39,7 +39,7 @@
 
 
 
-<div class="modal animated fadeIn" id="newStudio">
+<div class="modal" id="newStudio">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -149,7 +149,7 @@
             <span class="badge studioBtn" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-down"></span></span>
             </li>
 
-            <div class="well well-sm studioDetails animated fadeIn" style="margin-bottom:1px; display:none;" >
+            <div class="well well-sm studioDetails" data-status="close" style="overflow: hidden;height: 0px;display: none;margin-bottom: 0px;min-height: auto;padding: 0px;" >
 
 
     <?php 
@@ -162,7 +162,6 @@
                 echo "<div class='text-center showRegBtn' data-studio-id='".$studio->getStudioId()."'><a href='#'>מנויים רשומים</a></div><hr>"
 
       ?>
-         <form class="form-horizontal" id="studioForm" method="post">
          <table class="table table-striped">
            <thead>
           <tr>
@@ -203,7 +202,7 @@
                     } 
                   }
 
-                echo " </tbody></table></form></div>";  
+                echo " </tbody></table></div>";  
                }
 
              }
@@ -293,34 +292,31 @@ $("#studioDetailsModal").modal("show");
     $(".studioBtn").click(function(){
 
       var studioDetails = $(this).parent().next(".studioDetails");
-      var animationIn = "fadeIn";
-      var animationOut ="fadeOut";
+
+      if (studioDetails.data("status") == "close"){
+          $(this).removeClass("arrow-down");
+          $(this).addClass("arrow-up");
 
         
+        studioDetails.show();
 
-        if (studioDetails.hasClass(animationIn))
-        {
-           studioDetails.show();
-           studioDetails.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                studioDetails.removeClass(animationIn);
-           });
-            $(this).children().removeClass("glyphicon-chevron-down");
-              $(this).children().addClass("glyphicon-chevron-up");
-        }
-         else
-        {
-           studioDetails.addClass(animationOut);
-           studioDetails.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                studioDetails.removeClass(animationOut);
-                studioDetails.addClass(animationIn);
-                studioDetails.hide("fast");
+        studioDetails.animate({height: studioDetails.get(0).scrollHeight , padding:"9px"})
+        studioDetails.data("status" , "open")
+      }
+      else{
+          $(this).removeClass("arrow-up");
+          $(this).addClass("arrow-down");
+
+        studioDetails.data("status" , "close")
+
+        studioDetails.animate({height: "0px",padding:"0px" }, function(){
+          $(this).hide();
+        })
+
+      }
 
 
-           });
-              $(this).children().removeClass("glyphicon-chevron-up");
-              $(this).children().addClass("glyphicon-chevron-down");
 
-        }
 
 
     });
@@ -334,3 +330,32 @@ $("#studioDetailsModal").modal("show");
 
 
 </script>
+
+
+<style type="text/css">
+  
+
+.arrow-up{
+    animation-timing-function: linear;
+    animation-name: arrow-change-up;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes arrow-change-up {
+    to {transform: rotate(180deg);}
+}
+
+
+@keyframes arrow-change-down {
+    to {transform: rotate(180deg);}
+}
+
+.arrow-down{
+    animation-timing-function: linear;
+    animation-name: arrow-change-down;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+</style>
