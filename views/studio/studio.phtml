@@ -339,11 +339,21 @@ if (confirm("האם להסיר את המנוי משיעורי הסטודיו?"))
 
     $("#expand-all").click(function(){
 
+        status = $(this).data("status");
+        if ($(this).data("status")=="close"){
+          $(this).data("status" ,"open");
+           $(this).html("<span class='glyphicon glyphicon-resize-small'></span> הסתר הכל</a>");
+        }else{
+          $(this).data("status" ,"close");
+           $(this).html("<span class='glyphicon glyphicon-resize-full'></span> הצג הכל</a>");
+        }
+       
+
         $(".studioBtn").each(function(){
 
-      var studioDetails = $(this).parent().next(".studioDetails");
-
-      expand_studio($(this) , studioDetails);
+              var studioDetails = $(this).parent().next(".studioDetails");
+              studioDetails.data("status" , status);
+              expand_studio($(this) , studioDetails);
 
 
         })
