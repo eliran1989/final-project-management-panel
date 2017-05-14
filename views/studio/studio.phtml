@@ -330,19 +330,45 @@ if (confirm("האם להסיר את המנוי משיעורי הסטודיו?"))
 
       var studioDetails = $(this).parent().next(".studioDetails");
 
-      if (studioDetails.data("status") == "close"){
-          $(this).removeClass("arrow-down");
-          $(this).addClass("arrow-up");
+      expand_studio($(this) , studioDetails);
 
-        
+    });
+
+
+
+
+    $("#expand-all").click(function(){
+
+        $(".studioBtn").each(function(){
+
+      var studioDetails = $(this).parent().next(".studioDetails");
+
+      expand_studio($(this) , studioDetails);
+
+
+        })
+
+
+    });
+
+
+
+
+
+    function expand_studio(thisElement , studioDetails){
+
+          if (studioDetails.data("status") == "close"){
+          thisElement.removeClass("arrow-down");
+          thisElement.addClass("arrow-up");
+
         studioDetails.show();
 
         studioDetails.animate({height: studioDetails.get(0).scrollHeight , padding:"9px"})
         studioDetails.data("status" , "open")
       }
       else{
-          $(this).removeClass("arrow-up");
-          $(this).addClass("arrow-down");
+          thisElement.removeClass("arrow-up");
+          thisElement.addClass("arrow-down");
 
         studioDetails.data("status" , "close")
 
@@ -352,11 +378,7 @@ if (confirm("האם להסיר את המנוי משיעורי הסטודיו?"))
 
       }
 
-
-
-
-
-    });
+    }
 
 
 });
