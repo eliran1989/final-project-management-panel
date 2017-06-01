@@ -15,6 +15,12 @@
         }
  
 
+     public function initSection()
+    {
+
+    }
+
+
         public function userValidation()
         {
            $this->view->echoJson($this->model->checkUserValidation($_POST['tel'] , $_POST['pass']));
@@ -37,6 +43,12 @@
        {
          $programs = $this->model->getPrograms($_POST['id']);
          $this->view->printPrograms($programs);
+       }
+
+       public function activeStudios(){
+
+          $studios = $this->model->getStudios($_GET['subId']);
+
        }
 
 
