@@ -47,7 +47,7 @@
 
        public function activeStudios(){
 
-          $studios = $this->model->getStudios($_GET['subId']);
+          $this->view->echoJson($studios = $this->model->getStudios($_POST['id']));
 
        }
 

@@ -96,7 +96,12 @@ class AppModel extends Model
         }
 
 
-        print_r($studios);
+        if (isset($studios)){
+            return $studios;
+        }else{
+            return false;
+        }
+
 
 
     }
