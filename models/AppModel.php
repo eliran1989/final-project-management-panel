@@ -76,7 +76,22 @@ class AppModel extends Model
         while ($row = $result->fetch_array(MYSQLI_ASSOC))
         {
 
-          $studios[] =  array('name' => $row['lesson_name'], 'trainer'=>$row['firstName']." ".$row['lastName'] , 'lessons' => $this->db->query("SELECT `day` ,`time` FROM lesson WHERE `studio_id`='$row[id]'")->fetch_array(MYSQLI_ASSOC));
+          $studios[] =  array('name' => $row['lesson_name'], 'trainer'=>$row['firstName']." ".$row['lastName']);
+
+
+
+          $lessons = $this->db->query("SELECT `day` ,`time` FROM lesson WHERE `studio_id`='$row[id]'");
+
+
+           while($lesson = $lessons->fetch_array(MYSQLI_ASSOC)){
+
+
+            $studios[count($studios)-1]["lessons"][] = $lesson;
+
+
+           }
+
+
 
         }
 
