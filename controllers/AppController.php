@@ -38,6 +38,13 @@
        }
 
 
+           public function registerToStudio(){
+
+               if ($this->model->registerToStudio())
+                  echo "true";
+           }
+
+
 
        public function getPrograms()
        {

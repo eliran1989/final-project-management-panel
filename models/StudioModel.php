@@ -49,12 +49,9 @@ class StudioModel extends Model
 			$subID = htmlspecialchars($_POST['id']);
 			$studioID = htmlspecialchars($_POST['studio_id']);
 
-
-			$q="INSERT INTO `subs_studios` VALUES ('$subID', '$studioID')";
+			$q="INSERT IGNORE INTO `subs_studios` SET `subId` = '$subID' ,`studioId` = '$studioID'";
 
 			return $this->db->query($q);
-			
-
 
 		}
 

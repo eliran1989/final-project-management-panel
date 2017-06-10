@@ -60,6 +60,18 @@ class AppModel extends Model
 
     }
 
+    public function registerToStudio(){
+
+    
+            $subID = htmlspecialchars($_POST['id']);
+            $studioID = htmlspecialchars($_POST['studio_id']);
+
+            $q="INSERT IGNORE INTO `subs_studios` SET `subId` = '$subID' ,`studioId` = '$studioID'";
+
+            return $this->db->query($q);
+
+        
+    }
 
     public function getStudios($id){
 
@@ -76,8 +88,7 @@ class AppModel extends Model
         while ($row = $result->fetch_array(MYSQLI_ASSOC))
         {
 
-          $studios[] =  array('name' => $row['lesson_name'], 'trainer'=>$row['firstName']." ".$row['lastName']);
-
+          $studios[] =  array('id'=>$row['id'] ,'name' => $row['lesson_name'], 'trainer'=>$row['firstName']." ".$row['lastName']);
 
 
           $lessons = $this->db->query("SELECT `day` ,`time` FROM lesson WHERE `studio_id`='$row[id]'");
