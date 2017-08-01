@@ -50,8 +50,8 @@ class AppModel extends Model
 
         while ($row = $result->fetch_array(MYSQLI_ASSOC))
         {
-            $program = new Program();
-            $program->getProgram($row['program_id'] , $this->db);
+            $program = new Program($row['program_id']);
+            $program->getProgram($this->db);
             $programs[] = $program;
         }
 
