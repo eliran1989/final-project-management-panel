@@ -27,9 +27,8 @@ require_once ("Trainings.php");
         }
     }
 
-    public function __construct1($programId) {
+    public function __construct0() {
 
-      $this->setProgramId($programId);
 
     }
 
@@ -295,11 +294,11 @@ require_once ("Trainings.php");
   }
 
 
-  public function getProgram($db)
+  public function getProgram($programId ,$db)
   {
             $this->setDb($db);
 
-            $q  =  "SELECT `sub_id` ,`type`,`purpose`,`date_create` ,`date_end`,`program_length`,`note`,`create_by` FROM `training_programs` WHERE `program_id`='$this->programId'";
+            $q  =  "SELECT `sub_id` ,`type`,`purpose`,`date_create` ,`date_end`,`program_length`,`note`,`create_by` FROM `training_programs` WHERE `program_id`='$programId'";
 
             $result = $this->db->query($q);
 
@@ -320,7 +319,7 @@ require_once ("Trainings.php");
 
             $this->trainings = new trainings();
 
-            $q  =  "SELECT * FROM `training_letter` WHERE `program_id`='$this->programId' ORDER BY `id` ASC";
+            $q  =  "SELECT `letter` ,`muscle` ,`exercise`,`sets`,`repeats` FROM `training_letter` WHERE `program_id`='$programId' ORDER BY `id` ASC";
 
             $result = $this->db->query($q);
 

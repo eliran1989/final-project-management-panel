@@ -28,7 +28,6 @@ public function printPrograms($programs)
 
 	for ($i=0 ; $i<count($programs) ;$i++)
 	{
-		$arr[$i]['program_id'] = $programs[$i]->getProgramId();
 		$arr[$i]['type'] = $programs[$i]->getType();
 		$arr[$i]['purpose'] = $programs[$i]->getPurpose();
 		$arr[$i]['dateCreate'] = $programs[$i]->getDateCreate()->format("d-m-y");
