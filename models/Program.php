@@ -304,7 +304,7 @@ require_once ("Trainings.php");
 
             while ($row = $result->fetch_array(MYSQLI_ASSOC))
             {
-                $this->setProgramId($row['program_id'])
+                $this->setProgramId($row['program_id']);
                 $this->setSubId($row['sub_id']);
                 $this->setType($row['type']);
                 $this->setPurpose($row['purpose']);
