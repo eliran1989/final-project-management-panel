@@ -298,12 +298,13 @@ require_once ("Trainings.php");
   {
             $this->setDb($db);
 
-            $q  =  "SELECT `sub_id` ,`type`,`purpose`,`date_create` ,`date_end`,`program_length`,`note`,`create_by` FROM `training_programs` WHERE `program_id`='$programId'";
+            $q  =  "SELECT `program_id` ,`sub_id` ,`type`,`purpose`,`date_create` ,`date_end`,`program_length`,`note`,`create_by` FROM `training_programs` WHERE `program_id`='$programId'";
 
             $result = $this->db->query($q);
 
             while ($row = $result->fetch_array(MYSQLI_ASSOC))
             {
+                $this->setProgramId($row['program_id'])
                 $this->setSubId($row['sub_id']);
                 $this->setType($row['type']);
                 $this->setPurpose($row['purpose']);
@@ -312,8 +313,6 @@ require_once ("Trainings.php");
                 $this->setProgramLength($row['program_length']);
                 $this->setNote($row['note']);
                 $this->setCreateBy($row['create_by']);
-
-
             }
 
 
