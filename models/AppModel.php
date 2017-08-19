@@ -123,7 +123,7 @@ class AppModel extends Model
 
            public function startTraining($programId ,$letter){
 
-            date_default_timezone_set('UTC+2');
+            date_default_timezone_set('Asia/Jerusalem');
 
             $startTime = date("Y-m-d H:i");
 
