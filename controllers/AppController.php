@@ -48,10 +48,7 @@
            public function startTraining(){
 
 
-            $this->model->startTraining($_POST['programId'] , $_POST['letter']);
-
-            print_r($_POST);
-
+              echo $this->model->startTraining($_POST['programId'] , $_POST['letter']);
 
            }
 

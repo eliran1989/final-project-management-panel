@@ -131,7 +131,7 @@ class AppModel extends Model
 
              $result = $this->db->query($q);
 
-             echo $this->db->insert_id;
+             return $this->db->insert_id;
 
 
          }
