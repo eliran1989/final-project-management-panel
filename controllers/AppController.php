@@ -53,6 +53,14 @@
            }
 
 
+           public function endTraining(){
+
+
+            $this->model->endTraining($_POST['trackId']);
+
+           }
+
+
 
 
        public function getPrograms()

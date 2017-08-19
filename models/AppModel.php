@@ -137,6 +137,15 @@ class AppModel extends Model
          }
 
 
+
+            public function endTraining($trackId){
+
+                echo $trackId;
+
+
+            }
+
+
 }
 
 ?>
