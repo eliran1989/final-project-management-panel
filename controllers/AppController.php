@@ -45,6 +45,16 @@
            }
 
 
+           public function startTraining(){
+
+
+            print_r($_POST);
+
+
+           }
+
+
+
 
        public function getPrograms()
        {
@@ -57,6 +67,7 @@
           $this->view->echoJson($studios = $this->model->getStudios($_POST['id']));
 
        }
+
 
 
 
