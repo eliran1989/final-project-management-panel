@@ -123,7 +123,7 @@ class AppModel extends Model
 
            public function startTraining($programId ,$letter){
 
-            $startTime = date();
+            $startTime = mktime();
 
             $q="INSERT INTO `training_track` SET `program_id` = '$programId' ,`letter` = '$letter' , `start_time`='$startTime'";
 
