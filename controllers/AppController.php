@@ -54,9 +54,11 @@
 
 
            public function endTraining(){
-
+            print_r($_POST);die;
 
             $this->model->endTraining($_POST['trackId']);
+
+
 
            }
 
