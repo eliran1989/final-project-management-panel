@@ -140,6 +140,9 @@ class AppModel extends Model
 
             public function endTraining($trackId){
 
+                date_default_timezone_set('Asia/Jerusalem');
+
+
                 $endTime = date("Y-m-d H:i");
 
                 $q ="UPDATE `training_track` SET `end_time`='$endTime' WHERE `id`='$trackId'";
