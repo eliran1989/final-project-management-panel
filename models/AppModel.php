@@ -123,6 +123,8 @@ class AppModel extends Model
 
            public function startTraining($programId ,$letter){
 
+            date_default_timezone_set('UTC+2')
+
             $startTime = date("Y-m-d H:i");
 
             $q="INSERT INTO `training_track` SET `program_id` = '$programId' ,`letter` = '$letter' , `start_time`='$startTime'";
