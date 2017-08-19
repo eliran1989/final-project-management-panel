@@ -140,8 +140,14 @@ class AppModel extends Model
 
             public function endTraining($trackId){
 
-                echo $trackId;
+                $endTime = date("Y-m-d H:i");
 
+                $q ="UPDATE `training_track` SET `end_time`='$endTime' WHERE `id`='$trackId'";
+
+
+                $result = $this->db->query($q);
+
+                return $result;
 
             }
 
