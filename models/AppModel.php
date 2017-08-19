@@ -32,6 +32,8 @@ class AppModel extends Model
     }
 
 
+
+
     public function changePassFirstTime($id ,$pass)
     {
         $pass = md5("space".$pass);
@@ -116,6 +118,20 @@ class AppModel extends Model
 
 
     }
+
+
+
+           public function startTraining($programId ,$letter){
+
+
+
+            $q="INSERT INTO `training_track` SET `program_id` = '$programId' ,`letter` = '$letter' , `start_time`='date()'";
+
+            echo $q;
+
+
+         }
+
 
 }
 
