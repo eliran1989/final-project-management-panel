@@ -127,15 +127,22 @@ public function __construct(){
               }
 
               $trainingsSum = $totalnoOfWeek * $trainingsForWeek;
-               
 
-
-
-              $q = "SELECT * FROM `training_track` WHERE `program_id`='$program_id'";
+              $q = "SELECT `id` FROM `training_track` WHERE `program_id`='$program_id'";
 
               $result = $this->db->query($q);
 
-              print_r($result);
+              $totalTrainings = $result->num_rows;
+
+
+
+              if($totalTrainings==0){
+                return 0;
+              }else{
+                echo $totalTrainings/$trainingsSum*100;
+              }
+
+
 
 
         }
