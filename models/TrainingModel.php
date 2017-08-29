@@ -100,6 +100,45 @@ public function __construct(){
         }
 
 
+        public function get_track_precent($program_id , $letter , $startDate){
+
+              $today = date("d-m-Y");
+              $startDateWeekCnt = round(floor( date('d',strtotime($startDate)) / 7)) ;
+              $endDateWeekCnt = round(ceil( date('d',strtotime($today)) / 7)) ;
+              $datediff = strtotime(date('Y-m',strtotime($today))."-01") - strtotime(date('Y-m',strtotime($startDate))."-01");
+              $totalnoOfWeek = round(floor($datediff/(60*60*24)) / 7) + $endDateWeekCnt - $startDateWeekCnt ;
+
+              $totalnoOfWeek = $totalnoOfWeek-$totalnoOfWeek%7;
+
+
+              switch ($letter) {
+                case 'AB':
+                  $trainingsForWeek = 2;
+                  break;
+                case 'ABC':
+                  $trainingsForWeek = 3;
+                  break;
+                case 'ABCD':
+                  $trainingsForWeek = 4;
+                  break;
+                default:
+
+                  break;
+              }
+
+              $trainingsSum = $totalnoOfWeek * $trainingsForWeek;
+               
+
+              $q = "SELECT COUNT(*) FROM `training_track` WHERE `program_id`='$program_id'";
+
+              $result = $this->db->query($q);
+
+              echo $result;
+
+
+        }
+
+
         public function addProgram(){
 
             if ($_POST['purpose']=="other")

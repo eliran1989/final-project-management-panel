@@ -50,6 +50,15 @@
         {
             $sub = $this->_getSub($subs);
             $programs = $this->model->getSubPrograms($sub['id']);
+
+            print_r($programs);
+
+            for ($i=0; $i < count($programs) ; $i++) { 
+              
+                $programs[$i]['track_percent'] = $this->model->get_track_precent($programs[$i]['program_id'] , $programs[$i]['type'] , $programs[$i]['date_create']);
+
+            }
+
             $this->view->getTrainingPrograms($sub , $programs);
         }
 
