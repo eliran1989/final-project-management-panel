@@ -134,7 +134,7 @@ public function __construct(){
 
               $totalTrainings = $result->num_rows;
 
-              echo $totalTrainings."</br>";
+              echo $trainingsSum."</br>";
 
 
               if($totalTrainings==0){
