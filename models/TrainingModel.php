@@ -128,13 +128,14 @@ public function __construct(){
 
               $trainingsSum = $totalnoOfWeek * $trainingsForWeek;
                
-              echo $program_id."<br>";
 
 
 
-              $q = "SELECT COUNT(*) FROM `training_track` WHERE `program_id`='$program_id'";
+              $q = "SELECT * FROM `training_track` WHERE `program_id`='$program_id'";
 
               $result = $this->db->query($q);
+
+              print_r($result);
 
 
         }
