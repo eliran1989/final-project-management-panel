@@ -134,12 +134,13 @@ public function __construct(){
 
               $totalTrainings = $result->num_rows;
 
+              echo $totalTrainings."</br>";
 
 
               if($totalTrainings==0){
                 return 0;
               }else{
-                echo "".($totalTrainings/$trainingsSum*100)."<br>";
+                
               }
 
 
