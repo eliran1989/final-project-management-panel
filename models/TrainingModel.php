@@ -133,7 +133,7 @@ public function __construct(){
 
               $result = $this->db->query($q);
 
-              var_dump($result);
+              var_dump($result->num_rows);
 
 
         }
