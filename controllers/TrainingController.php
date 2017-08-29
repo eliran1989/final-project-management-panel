@@ -59,6 +59,7 @@
 
             }
 
+
             $this->view->getTrainingPrograms($sub , $programs);
         }
 
