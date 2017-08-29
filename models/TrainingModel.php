@@ -108,7 +108,6 @@ public function __construct(){
               $datediff = strtotime(date('Y-m',strtotime($today))."-01") - strtotime(date('Y-m',strtotime($startDate))."-01");
               $totalnoOfWeek = round(floor($datediff/(60*60*24)) / 7) + $endDateWeekCnt - $startDateWeekCnt ;
 
-              $totalnoOfWeek = $totalnoOfWeek;
 
 
               switch ($letter) {
@@ -134,7 +133,7 @@ public function __construct(){
 
               $totalTrainings = $result->num_rows;
 
-              echo $totalnoOfWeek%7."</br>";
+              echo $totalnoOfWeek."</br>";
 
 
               if($totalTrainings==0){
