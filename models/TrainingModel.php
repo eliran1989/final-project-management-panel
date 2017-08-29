@@ -139,7 +139,7 @@ public function __construct(){
               if($totalTrainings==0){
                 return 0;
               }else{
-                echo floor($totalTrainings/$trainingsSum*100);
+                echo intval($totalTrainings/$trainingsSum*100);
               }
 
 
