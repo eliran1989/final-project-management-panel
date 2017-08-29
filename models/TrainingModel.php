@@ -134,7 +134,7 @@ public function __construct(){
 
               $totalTrainings = $result->num_rows;
 
-              echo $trainingsSum."</br>";
+              echo $totalnoOfWeek."</br>";
 
 
               if($totalTrainings==0){
