@@ -102,9 +102,9 @@ public function __construct(){
 
         public function get_track_precent($program_id , $letter , $startDate){
 
-              $today = date("d-m-Y");
+              $today = new DateTime("d-m-Y");
 
-              $startDate = date($startDate);
+              $startDate = new DateTime($startDate);
 
               $interval = $startDate->diff($today);
 
