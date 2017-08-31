@@ -144,7 +144,7 @@ public function __construct(){
               if($totalTrainings==0){
                 return 0;
               }else{
-                 echo  ($trainingsSum*$totalTrainings/100)."% <br>";
+                 echo  ($totalTrainings/$trainingsSum*100)."% <br>";
               }
 
 
