@@ -103,9 +103,12 @@ public function __construct(){
         public function get_track_precent($program_id , $letter , $startDate){
 
               $today = date("d-m-Y");
+
+              $startDate = date($startDate);
+
               $interval = $startDate->diff($today);
 
-              $weeks = (int)(($interval->days) / 7);
+              $weeks = $interval->days / 7;
 
                 echo $weeks."<br>"; die;
 
