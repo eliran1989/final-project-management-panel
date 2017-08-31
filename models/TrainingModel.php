@@ -104,9 +104,9 @@ public function __construct(){
 
               $today = new DateTime("d-m-Y");
 
-              $startDate = new DateTime($startDate);
+             // $startDate = new DateTime($startDate);
 
-              print_r($startDate);die;
+              print_r($today);die;
 
               //$interval = $startDate->diff($today);
 
