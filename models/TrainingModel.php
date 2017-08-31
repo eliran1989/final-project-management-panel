@@ -105,7 +105,9 @@ public function __construct(){
               $today = date("d-m-Y");
               $interval = $startDate->diff($today);
 
-                echo (int)(($interval->days) / 7)."<br>"; die;
+              $weeks = (int)(($interval->days) / 7);
+
+                echo $weeks."<br>"; die;
 
 
 
