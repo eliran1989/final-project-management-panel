@@ -108,9 +108,9 @@ public function __construct(){
 
                 $interval = $startDate->diff($today);
 
-                echo (int)(($interval->days) / 7) ."<br>";
+                $totalnoOfWeek = (int)(($interval->days) / 7);
 
-/*                
+                
 
 
               switch ($letter) {
@@ -136,7 +136,9 @@ public function __construct(){
 
               $totalTrainings = $result->num_rows;
 
-              echo $totalnoOfWeek."</br>";
+
+              echo  $trainingsSum*$totalTrainings/100."% <br>";
+
 
 
               if($totalTrainings==0){
@@ -144,7 +146,7 @@ public function __construct(){
               }else{
                 
               }
-*/
+
 
 
 
