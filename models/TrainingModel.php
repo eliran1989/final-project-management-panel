@@ -106,11 +106,12 @@ public function __construct(){
 
               $startDate = new DateTime($startDate);
 
-              $interval = $startDate->diff($today);
+              print_r($startDate);die;
 
-              $weeks = $interval->days / 7;
+              //$interval = $startDate->diff($today);
 
-                echo $weeks."<br>"; die;
+              
+
 
 
 
