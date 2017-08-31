@@ -81,12 +81,12 @@
 
        
           
-
+/*
           for ($i=0; $i < count($programs) ; $i++) { 
             
               $programs[$i]['track_percent'] = $this->model->get_track_precent($programs[$i]['program_id'] , $programs[$i]['type'] , $programs[$i]['date_create']);
 
-          }
+          }*/
 
 
 
