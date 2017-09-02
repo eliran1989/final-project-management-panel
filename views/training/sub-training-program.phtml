@@ -49,7 +49,7 @@ if (count($programs)>0)
           <input type='hidden' name='progId' value='".$programs[$i]['program_id']."'>
           <input type='hidden' name='firstName' value='".$sub['firstName']."'>
           <input type='hidden' name='lastName' value='".$sub['lastName']."'></form>
-          <td>".($i+1)."</td><td>".$programs[$i]['purpose']."</td><td>".$programs[$i]['type']."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_create']))."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_end']))."</td><td>".$programs[$i]['create_by']."</td><td></td>
+          <td>".($i+1)."</td><td>".$programs[$i]['purpose']."</td><td>".$programs[$i]['type']."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_create']))."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_end']))."</td><td>".$programs[$i]['create_by']."</td><td>".$programs[$i]['track_percent']."</td>
               </tr>";
    }
 

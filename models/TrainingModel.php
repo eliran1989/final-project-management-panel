@@ -111,8 +111,6 @@ public function __construct(){
                 $totalnoOfWeek = (int)(($interval->days) / 7);
 
                 
-
-
               switch ($letter) {
                 case 'AB':
                   $trainingsForWeek = 2;
@@ -137,14 +135,10 @@ public function __construct(){
               $totalTrainings = $result->num_rows;
 
 
-
-
-
-
               if($totalTrainings==0){
                 return 0;
               }else{
-                 echo floor($totalTrainings/$trainingsSum*100)."% <br>";
+                 return floor($totalTrainings/$trainingsSum*100);
               }
 
 
