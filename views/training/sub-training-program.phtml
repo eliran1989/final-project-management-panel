@@ -54,7 +54,14 @@ if (count($programs)>0)
   }
 
 
-
+    if($programs[$i]['track_percent']==0){
+      $precent = "אין נתונים";
+      $trackingColor ="label-default";
+    }elseif ($programs[$i]['track_percent']>100) {
+      $precent = 100;
+    }else{
+      $precent = $programs[$i]['track_percent'];
+    }
 
 
 
@@ -66,7 +73,7 @@ if (count($programs)>0)
           <input type='hidden' name='progId' value='".$programs[$i]['program_id']."'>
           <input type='hidden' name='firstName' value='".$sub['firstName']."'>
           <input type='hidden' name='lastName' value='".$sub['lastName']."'></form>
-          <td>".($i+1)."</td><td>".$programs[$i]['purpose']."</td><td>".$programs[$i]['type']."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_create']))."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_end']))."</td><td>".$programs[$i]['create_by']."</td><td><span class='label ".$trackingColor."'>".$programs[$i]['track_percent']."%</span></td></tr>";
+          <td>".($i+1)."</td><td>".$programs[$i]['purpose']."</td><td>".$programs[$i]['type']."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_create']))."</td><td>".date("d-m-Y", strtotime($programs[$i]['date_end']))."</td><td>".$programs[$i]['create_by']."</td><td><span class='label ".$trackingColor."'>".$precent."%</span></td></tr>";
    }
 
 }
