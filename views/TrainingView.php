@@ -86,7 +86,9 @@ class TrainingView extends View
   }
 
 
-  	public function showProgram($program){
+  	public function showProgram($program , $traking_details){
+
+      print_r($traking_details);die;
 
   		$A =$program->getTrainings()->getA();
   		$B =$program->getTrainings()->getB();

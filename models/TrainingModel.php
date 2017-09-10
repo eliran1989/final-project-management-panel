@@ -102,37 +102,9 @@ public function __construct(){
 
         public function get_track_precent($program_id , $letter , $startDate){
 
-              $startDate = new DateTime($startDate);
-              $today = new DateTime();
+             $trainingsSum = $this->getTrainingsSum($letter , $startDate);
 
-
-                $interval = $startDate->diff($today);
-
-                $totalnoOfWeek = (int)(($interval->days) / 7);
-
-                
-              switch ($letter) {
-                case 'AB':
-                  $trainingsForWeek = 2;
-                  break;
-                case 'ABC':
-                  $trainingsForWeek = 3;
-                  break;
-                case 'ABCD':
-                  $trainingsForWeek = 4;
-                  break;
-                default:
-
-                  break;
-              }
-
-              $trainingsSum = $totalnoOfWeek * $trainingsForWeek;
-
-              $q = "SELECT `id` FROM `training_track` WHERE `program_id`='$program_id'";
-
-              $result = $this->db->query($q);
-
-              $totalTrainings = $result->num_rows;
+             $totalTrainings = $this->getTotalTraining($program_id);
 
 
               if($totalTrainings==0){
@@ -167,8 +139,33 @@ public function __construct(){
 
           $program->getProgram($programId , $this->db);
 
+
+
+
           return $program;
       
+        }
+
+
+
+        public function getTrakingDetails($programId){
+
+              $q = "SELECT * FROM `training_track` WHERE `program_id`='$programId'";
+
+               $result = $this->db->query($q);
+
+              $details['totalTrainings'] = "";
+              $details['sumTrainings'] =  $result->num_rows; 
+
+              
+          while ($row = $result->fetch_array(MYSQLI_ASSOC))
+          {
+              $details[]['trainingDetails'] = $row;  
+          }
+
+             return $details;
+
+
         }
 
         public function updateProgram(){
@@ -178,6 +175,48 @@ public function __construct(){
 
           $program =new Program($_GET['subId'],$_POST['trainingType'],$_POST['purpose'],$_POST['training_lenght'],$_POST['note'],$this->db);
             return $program->update();
+
+        }
+
+
+        private function getTotalTraining($progId){
+
+              $q = "SELECT `id` FROM `training_track` WHERE `program_id`='$progId'";
+
+              $result = $this->db->query($q);
+
+              return $result->num_rows;
+
+
+        }
+
+        private function getTrainingsSum($letter , $startDate){
+
+              $startDate = new DateTime($startDate);
+              $today = new DateTime();
+
+
+                $interval = $startDate->diff($today);
+
+                $totalnoOfWeek = (int)(($interval->days) / 7);
+
+                
+              switch ($letter) {
+                case 'AB':
+                  $trainingsForWeek = 2;
+                  break;
+                case 'ABC':
+                  $trainingsForWeek = 3;
+                  break;
+                case 'ABCD':
+                  $trainingsForWeek = 4;
+                  break;
+                default:
+
+                  break;
+              }
+
+              return $totalnoOfWeek * $trainingsForWeek;
 
         }
 

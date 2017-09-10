@@ -119,7 +119,9 @@
        $this->setSectionTemplate();
        $this->view->navBar();
        $program = $this->model->getProgram($_GET['progId']);
-       $this->view->showProgram($program);
+       $tracking_details = $this->model->getTrakingDetails($_GET['progId']);
+
+       $this->view->showProgram($program , $tracking_details);
 
       if (isset($bool))
       {
