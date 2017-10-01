@@ -225,8 +225,8 @@ echo '<p>'.nl2br($note).'</p>';
 <div class="panel panel-info">
   <div class="panel-heading text-center"><strong>מעקב אימונים</strong></div>
   <div class="panel-body">
-    <div class="col-md-6 text-center"><strong>סה"כ אימונים אפשריים:</strong></div>
-    <div class="col-md-6 text-center"><strong>אימונים שבוצעו בפועל:</strong></div>
+    <div class="col-md-6 text-center"><strong>סה"כ אימונים אפשריים:</strong><?php echo $tracking_details['totalTrainings']; ?></div>
+    <div class="col-md-6 text-center"><strong>אימונים שבוצעו בפועל:</strong><?php  echo $tracking_details['sumTrainings']; ?></div>
 
     <div class="col-md-12"><h4>אימונים אחרונים</h4></div>
     <table class="table table-striped">
@@ -238,6 +238,23 @@ echo '<p>'.nl2br($note).'</p>';
       <th>סיום</th>
     </tr>
   </thead>
+ <tbody> 
+
+
+  <?php for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
+  
+
+ <tr>
+  <td><?php echo  $i+1; ?></td>
+  <td><?php echo $tracking_details[$i]['letter']; ?></td>
+  <td><?php echo date("H:i d-m-y" ,strtotime($tracking_details[$i]['start_time'])); ?></td>
+  <td><?php echo date("H:i d-m-y" ,strtotime($tracking_details[$i]['end_time'])); ?></td>
+</tr>
+
+
+ <?php  } ?>
+
+ </tbody>
 
     </table>
 

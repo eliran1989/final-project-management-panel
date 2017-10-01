@@ -160,7 +160,7 @@ public function __construct(){
               
           while ($row = $result->fetch_array(MYSQLI_ASSOC))
           {
-              $details[]['trainingDetails'] = $row;  
+              $details[] = $row;  
           }
 
              return $details;
