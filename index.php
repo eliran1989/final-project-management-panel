@@ -3,8 +3,12 @@
 
 <?php
 
-echo file_get_contents("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx?wsdl");
-die();
+            $ini = ini_set("soap.wsdl_cache_enabled","0");
+
+                $client = new SoapClient("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx?wsdl");
+
+                print_r($client);
+                die;
 
 
 header('Access-Control-Allow-Origin: *');
