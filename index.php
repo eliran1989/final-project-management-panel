@@ -2,6 +2,11 @@
 
 
 <?php
+
+echo file_get_contents("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx?wsdl");
+die();
+
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');  
 
