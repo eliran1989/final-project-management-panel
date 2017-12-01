@@ -3,11 +3,24 @@
 
 <?php
 
+
+            try
+            {
+
             $ini = ini_set("soap.wsdl_cache_enabled","0");
 
                 $client = new SoapClient("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx?wsdl");
 
                 print_r($client);
+
+
+
+            
+            }
+            catch (Exception $e)  
+            {
+            echo $e;
+            }    
                 die;
 
 
