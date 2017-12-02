@@ -9,7 +9,7 @@
 
             $ini = ini_set("soap.wsdl_cache_enabled","0");
 
-                $client = new SoapClient("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx");
+                $client = new SoapClient("http://api.itnewsletter.co.il/webServices/WebServiceSMS.asmx?wsdl" , array('login' => "elirana1989@gmail.com", 'password'=> "kQM9c9"));
 
                 print_r($client);
 
