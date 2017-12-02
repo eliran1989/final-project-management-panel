@@ -19,7 +19,7 @@
             }
             catch (Exception $e)  
             {
-            echo $e;
+            echo $e->getMessage();
             }    
                 die;
 
