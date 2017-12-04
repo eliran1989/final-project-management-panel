@@ -153,15 +153,25 @@ public function __construct(){
               $q = "SELECT * FROM `training_track` WHERE `program_id`='$programId'";
 
                $result = $this->db->query($q);
+               $details['sumTrainings'] =  $result->num_rows; 
 
-              $details['totalTrainings'] = "";
-              $details['sumTrainings'] =  $result->num_rows; 
+              
 
               
           while ($row = $result->fetch_array(MYSQLI_ASSOC))
           {
               $details[] = $row;  
           }
+
+
+          $q = "SELECT `date_create` ,`type` FROM `training_programs` WHERE `program_id`='$programId'";
+          $result = $this->db->query($q);
+
+
+          print_r($result->fetch_array());
+
+          $details['totalTrainings'] = $this->getTrainingsSum($result->fetch_array()[1] ,$result->fetch_array()[0]);
+        
 
              return $details;
 
@@ -191,6 +201,9 @@ public function __construct(){
         }
 
         private function getTrainingsSum($letter , $startDate){
+
+            echo $startDate;
+
 
               $startDate = new DateTime($startDate);
               $today = new DateTime();
