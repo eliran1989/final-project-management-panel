@@ -154,7 +154,6 @@ public function __construct(){
 
                $result = $this->db->query($q);
                $details['sumTrainings'] =  $result->num_rows; 
-
               
 
               
@@ -168,9 +167,8 @@ public function __construct(){
           $result = $this->db->query($q);
 
 
-          print_r($result->fetch_array());
 
-          $details['totalTrainings'] = $this->getTrainingsSum($result->fetch_array()[1] ,$result->fetch_array()[0]);
+          $details['totalTrainings'] = $this->getTrainingsSum($result->fetch_array()[1] , $result->fetch_array()[0]);
         
 
              return $details;
@@ -195,15 +193,13 @@ public function __construct(){
 
               $result = $this->db->query($q);
 
+
               return $result->num_rows;
 
 
         }
 
         private function getTrainingsSum($letter , $startDate){
-
-            echo $startDate;
-
 
               $startDate = new DateTime($startDate);
               $today = new DateTime();
