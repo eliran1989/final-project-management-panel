@@ -166,10 +166,13 @@ public function __construct(){
           $q = "SELECT `date_create` ,`type` FROM `training_programs` WHERE `program_id`='$programId'";
           $result = $this->db->query($q);
 
+          $row = $result->fetch_array();
+
+          $details['totalTrainings'] = $this->getTrainingsSum($row[1] , $row[0]);
 
 
-          $details['totalTrainings'] = $this->getTrainingsSum($result->fetch_array()[1] , $result->fetch_array()[0]);
-        
+
+
 
              return $details;
 
@@ -201,9 +204,10 @@ public function __construct(){
 
         private function getTrainingsSum($letter , $startDate){
 
+
+
               $startDate = new DateTime($startDate);
               $today = new DateTime();
-
 
                 $interval = $startDate->diff($today);
 
