@@ -48,6 +48,12 @@
             case 4:  // sex breakdown
             $this->view->showReport(4);
             break;
+            case 5:  // studio report
+            $this->view->showReport(5);
+            break;
+            case 6:  // studio lesson report
+            $this->view->showReport(6);
+            break;
 
 
         default:
@@ -61,6 +67,14 @@
         $this->setSectionTemplate();
         $this->view->reportsSubsMain();
     }
+
+    public function reportsStudiosMain()
+    {
+        parent::checkUser();
+        $this->setSectionTemplate();
+        $this->view->reportsStudioMain();
+    }
+
 
 
     public function subsByDateOfReg()

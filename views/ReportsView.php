@@ -59,6 +59,22 @@ public function showReport($reportNumber)
             $reportType="sexBreakdown";
             break;
 
+            case 5:  
+            $category="סטודיו";
+            $catPath="studios";
+            $reportName="דוח כללי";
+            $reportType="allStudiosReport";
+            break;
+
+            case 6:  
+            $category="סטודיו";
+            $catPath="studios";
+            $reportName="דוח לשיעור ספציפי";
+            $reportType="lessonReport";
+            break;
+
+
+
         default:
 
 
@@ -72,6 +88,13 @@ public function showReport($reportNumber)
 public function reportsSubsMain()
 {
    include("views/reports/subs/reportsSubs.phtml");
+}
+
+
+public function reportsStudioMain()
+{
+
+   include("views/reports/studios/reportsStudios.phtml");
 }
 
 
