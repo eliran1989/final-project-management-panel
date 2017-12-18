@@ -246,8 +246,8 @@ echo '<p>'.nl2br($note).'</p>';
  <tr>
   <td><?php echo  $i+1; ?></td>
   <td><?php echo $tracking_details[$i]['letter']; ?></td>
-  <td><?php echo date("H:i d-m-y" ,strtotime($tracking_details[$i]['start_time'])); ?></td>
-  <td><?php echo (!empty($tracking_details[$i]['end_time'])) ? date("H:i d-m-y" ,strtotime($tracking_details[$i]['end_time'])) : "" ; ?></td>
+  <td><?php echo date("d-m-Y H:i" ,strtotime($tracking_details[$i]['start_time'])); ?></td>
+  <td><?php echo (!empty($tracking_details[$i]['end_time'])) ? date("d-m-Y H:i" ,strtotime($tracking_details[$i]['end_time'])) : "" ; ?></td>
 </tr>
 
 
