@@ -49,7 +49,10 @@
             $this->view->showReport(4);
             break;
             case 5:  // studio report
-            $this->view->showReport(5);
+
+            $reportDetails = $this->model->allStudiosReport();
+
+            $this->view->allStudiosReport($reportDetails);
             break;
             case 6:  // studio lesson report
             $this->view->showReport(6);

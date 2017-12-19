@@ -11,6 +11,31 @@ public function __construct(){
 }
 
 
+public function allStudiosReport(){
+
+
+$q = "SELECT subscriptions.id , subscriptions.firstName , subscriptions.lastName , studio_lessons.lesson_name FROM `subscriptions`INNER JOIN `subs_studios` ON subscriptions.id = subs_studios.subId INNER JOIN `studio_lessons` ON subs_studios.studioId = studio_lessons.id";
+
+$result = $this->db->query($q);
+
+
+	$studioArray = array();
+
+	while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$lesson_name = $row['lesson_name'];
+				unset($row['lesson_name']);
+		    	$studioArray[$lesson_name][] =  $row;
+
+	}
+
+
+
+		return $studioArray;
+
+
+}
+
+
 public function getSubsByDateOfReg($start , $end)
 {
    

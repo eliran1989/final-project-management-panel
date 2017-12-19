@@ -1,14 +1,91 @@
 <div class="col-md-10">
-<div class="panel panel-default">
-   <div class="panel-heading">
+<div class="panel panel-default ">
+   <div class="panel-heading none_print">
     <ul class="breadcrumb" style="background:none; padding:0px; margin:0px;">
   <li><a href="index.php?section=reports">דוחות</a></li>
   <li><a href="index.php?section=reports&action=reportsStudiosMain"><?php echo $category ?></a></li>
   <li class="active"> <?php echo $reportName ?></li>
 </ul>
   </div>
-  <div class="panel-body">
+  <div class="panel-body" style="overflow-x: hidden;height: 600px;overflow-y: scroll;">
+
+ <?php  
+
+ 		foreach ($studio as $key => $value) { ?>
+
+				<div class="col-md-12">
+				<div class="panel panel-default studio">
+				   <div class="panel-heading text-center">
+
+				   	<?php echo $key; ?>
+
+				  </div>
+				  <div class="panel-body">
+
+				 <table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">תעודת זהות</th>
+				      <th scope="col">שם פרטי</th>
+				      <th scope="col">שם משפחה</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+
+				   <?php
+					 foreach ($value as $num => $sub) { ?>
+						    <tr>
+						      <th><?php echo ($num+1); ?></th>
+						      <td><?php echo $sub['id']; ?></td>
+						      <td><?php echo $sub['firstName']; ?></td>
+						      <td><?php echo $sub['lastName']; ?></td>
+						    </tr>
+					  <?php } ?>  </tbody></table>
+<div class="col-md-2 col-md-offset-10">סה"כ" רשומים: <?php echo count($value); ?></div>
+					</div>
+
+				</div>
+				</div> 
+
+
+
+
+
+
+ 		<?php } ?>
 
   </div>
+
 </div>
+  <button class="btn btn-default" id="print" onClick="window.print()"><span class="glyphicon glyphicon-print"></span></button>
 </div> 
+
+<style type="text/css">
+	
+   @media print
+   {
+	.studio {page-break-after: auto;}
+
+    #sideBar ,#print, .breadcrumb{
+     display: none;}
+     .panel-heading h3{
+      display: block;
+     }
+
+     .none_print{
+     	display: none;
+     }
+
+      .panel-body{
+      	overflow: auto!important;
+      	height: auto!important;
+      }
+
+      
+    
+    }
+
+
+
+</style>

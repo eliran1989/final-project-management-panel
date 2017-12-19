@@ -80,10 +80,29 @@ public function showReport($reportNumber)
 
 		}
 
-    include ("views/reports/".$catPath."/".$reportType.".phtml");
+
+          include ("views/reports/".$catPath."/".$reportType.".phtml");
 
 
 }
+
+
+
+public function allStudiosReport($studio){
+
+            $category="סטודיו";
+            $catPath="studios";
+            $reportName="דוח כללי";
+            $reportType="allStudiosReport";
+
+
+
+          include ("views/reports/".$catPath."/".$reportType.".phtml");
+
+
+}
+
+
 
 public function reportsSubsMain()
 {
