@@ -72,7 +72,6 @@ $("#subDetails").load("views/subs/subDetails.html");
     }, function (data, status){
 
            var data =JSON.parse(data);
-           console.log(data);
            if (data.length == 0 )
            {
             $("#currentStudios").html("<strong>המנוי אינו רשום לאף שיעור סטודיו</strong>");
@@ -82,7 +81,7 @@ $("#subDetails").load("views/subs/subDetails.html");
             $("#currentStudios").html("<strong>שיעורי סטודיו פעילים: </strong>");
 
              for (i=0 ;i<data.length ;i++){
-                     $("#currentStudios").append(' <span class="label label-info" id="'+data[i]['id']+'"><span title="הסרה" class="removeBtn">&times;</span> '+data[i]['lesson']+'</div>');
+                     $("#currentStudios").append(' <span class="label label-info" id="'+data[i]['id']+'">'+data[i]['lesson']+'</div>');
 
                  
 
@@ -99,19 +98,24 @@ $("#subDetails").load("views/subs/subDetails.html");
 
 
     }, function (data, status){
-
            var data =JSON.parse(data);
             $("#studio-list").empty();
             $("#studio-list").append("<option value='' display selected style='display:none;'> רשימת שיעורים</option>");
 
             for (var cat in data) {
-               $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
+               
 
                 currentStudios = $("#currentStudios").text();
 
-                for (i=0; i<data[cat].length ; i++)
+                for (i=0; i<data[cat].length ; i++){
+
+                     if(i==0 && !currentStudios.includes(data[cat][i].lesson_name)){
+                        $("#studio-list").append('<optgroup label = "'+cat+'"></optgroup>');
+                     }
+
                  if (!currentStudios.includes(data[cat][i].lesson_name))
                  $("#studio-list").append('<option value="'+data[cat][i].id+'">'+data[cat][i].lesson_name+'</option>');  
+                 }
 
             }
   

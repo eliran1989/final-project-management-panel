@@ -61,6 +61,8 @@ class StudioModel extends Model
 
 			$q="SELECT * FROM `studio_lessons` WHERE `cat_id`='$catId'";
 
+
+
 			$result = $this->db->query($q);
 
 
@@ -121,7 +123,7 @@ class StudioModel extends Model
 
 		public function getLessonByStudioId ($studioId){
 
-			$q="SELECT `day`,`time` FROM `lesson` WHERE `studio_id`='$studioId'";
+			$q="SELECT `day`,`time` FROM `lesson` WHERE `studio_id`='$studioId' order by `id` ASC";
 			$result = $this->db->query($q);
 			$lessonArr =array();
 
@@ -153,7 +155,7 @@ class StudioModel extends Model
 				$trainerId =$row['trainer_id'];
 				$catId =$row['cat_id'];
 
-				$q="SELECT `day`,`time` FROM `lesson` WHERE `studio_id`='$row[id]'";
+				$q="SELECT `day`,`time` FROM `lesson` WHERE `studio_id`='$row[id]' order by `id` ASC";
 				$lessonResult = $this->db->query($q);
 
 			
