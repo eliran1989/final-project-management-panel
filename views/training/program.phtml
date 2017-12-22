@@ -245,10 +245,8 @@ echo '<p>'.nl2br($note).'</p>';
 
   <?php 
 
-  print_r($tracking_details);
 
-
-  if(empty($tracking_details)){?>
+  if(count($tracking_details) == 2){?>
 
     <div class="alert alert-info text-center"><strong>
         עד כה לא בוצעו אימונים כלל.
