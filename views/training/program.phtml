@@ -241,7 +241,20 @@ echo '<p>'.nl2br($note).'</p>';
  <tbody> 
 
 
-  <?php for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
+
+
+  <?php 
+
+
+  if(empty($tracking_details)){?>
+
+    <div class="alert alert-info text-center"><strong>
+        עד כה לא בוצעו אימונים כלל.
+    </div>
+
+  <?php }
+
+  for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
   
  <tr>
   <td><?php echo  $i+1; ?></td>
