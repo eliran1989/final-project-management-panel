@@ -221,7 +221,7 @@ echo '<p>'.nl2br($note).'</p>';
 
 
 
-<div class='col-md-10 col-md-offset-2'>
+<div class='col-md-10 col-md-offset-2 none-print'>
 <div class="panel panel-info">
   <div class="panel-heading text-center"><strong>מעקב אימונים</strong></div>
   <div class="panel-body">
@@ -288,7 +288,7 @@ echo '<p>'.nl2br($note).'</p>';
    @media print
    {
 
-    #sideBar , .btn{
+    #sideBar , .btn , .none-print{
      display: none;
     }
 

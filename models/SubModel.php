@@ -21,7 +21,7 @@ public function __construct(){
     public function getLastRegisters()
     {
 
-    $q ="SELECT `id`,`firstName`,`lastName` ,`dateStart` FROM `subscriptions` ORDER BY `number` DESC LIMIT 5";
+    $q ="SELECT `id`,`firstName`,`lastName` ,`dateStart` FROM `subscriptions` ORDER BY `number` DESC  LIMIT 5";
   
    if ($result = $this->db->query($q)) {
     $j=0;
