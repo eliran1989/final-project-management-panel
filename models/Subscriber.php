@@ -221,8 +221,8 @@ class Subscriber
 	  public function setPassword()
 	  {
 	   $randomPassword =$this->randomPassword();
-	   //echo $randomPassword;
-	   $this->sendSms($randomPassword);
+	   echo $randomPassword;
+	  /* $this->sendSms($randomPassword);*/
 	   $this->password = md5("space". $randomPassword);
 	  }
 
