@@ -245,18 +245,19 @@ echo '<p>'.nl2br($note).'</p>';
 
   <?php 
 
-
+  for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
+  
+ <tr>
+<?php 
   if(count($tracking_details) == 2){?>
 
     <div class="alert alert-info text-center"><strong>
         עד כה לא בוצעו אימונים כלל.
     </div>
 
-  <?php }
+  <?php } ?>
 
-  for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
-  
- <tr>
+
   <td><?php echo  $i+1; ?></td>
   <td><?php echo $tracking_details[$i]['letter']; ?></td>
   <td><?php echo date("H:i d-m-y" ,strtotime($tracking_details[$i]['start_time'])); ?></td>
