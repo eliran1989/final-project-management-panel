@@ -246,13 +246,7 @@ echo '<p>'.nl2br($note).'</p>';
   <?php 
 
 
-  if(count($tracking_details) == 2){?>
 
-    <tr><div class="alert alert-info text-center"><strong>
-        עד כה לא בוצעו אימונים כלל.
-    </div></tr>
-
-  <?php }
 
   for ($i=0; $i < count($tracking_details)-2 ; $i++) { ?>
   
@@ -267,6 +261,16 @@ echo '<p>'.nl2br($note).'</p>';
  <?php  } ?>
 
  </tbody>
+
+<?php 
+  if(count($tracking_details) == 2){?>
+
+    <tr><div class="alert alert-info text-center"><strong>
+        עד כה לא בוצעו אימונים כלל.
+    </div></tr>
+
+  <?php }
+
 
     </table>
 
