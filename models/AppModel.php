@@ -158,11 +158,12 @@ class AppModel extends Model
 
             public function updateDetails($details){
 
-                $phone = (isset($details['phone'])) ? "`phone`=".$details['phone'] :"";
-                $email = (isset($details['email'])) ? "`email`=".$details['email'] :"";
+                $phone = (isset($details['phone'])) ? "`phone`=".$details['phone'] :;
+                $email = (isset($details['email'])) ? "`email`=".$details['email'] :;
                 $address =  (isset($details['address'])) ? "`address`=".$details['address'] :"";
 
-                $q = "UPDATE `subscriptions` SET ".$phone.",".$email.",".$address." WHERE condition";
+
+                $q = "UPDATE `subscriptions` SET ".$phone.$email.$address." WHERE condition";
 
                 echo $q;
 
