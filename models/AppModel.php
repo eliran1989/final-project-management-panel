@@ -166,9 +166,9 @@ class AppModel extends Model
                 $q = "UPDATE `subscriptions` SET ".$phone.",".$email.",".$address." WHERE condition";
 
 
-                $q = str_replace(", WHERE", " WHERE", $q);
+                //$q = str_replace(", WHERE", " WHERE", $q);
 
-                echo $q;
+                echo str_replace(", WHERE", " WHERE", $q);
 
             }
 
