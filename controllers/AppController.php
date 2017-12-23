@@ -76,10 +76,7 @@
 
 
        public function updateDetails(){
-
-
-        echo "updateDetails";
-
+            print_r($_POST);
        }
 
 
