@@ -162,7 +162,7 @@ class AppModel extends Model
                 $email = (isset($details['email'])) ? "`email`=".$details['email'] :"";
                 $address =  (isset($details['address'])) ? "`address`=".$details['address'] :"";
 
-                $q = "UPDATE `subscriptions` SET ".$update." WHERE condition";
+                $q = "UPDATE `subscriptions` SET ".$phone.",".$email.",".$address." WHERE condition";
 
                 echo $q;
 
