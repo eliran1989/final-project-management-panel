@@ -165,7 +165,7 @@ class AppModel extends Model
 
                 $q = "UPDATE `subscriptions` SET ".$phone.$email.$address." WHERE condition";
 
-
+                $q = str_replace("SET ," , "SET ", $q);
                 echo $q;
 
                 
