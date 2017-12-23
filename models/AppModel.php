@@ -163,7 +163,7 @@ class AppModel extends Model
                 $address =  (isset($details['address'])) ? "`address`=".$details['address'] :"";
 
 
-                $q = "UPDATE `subscriptions` SET ".$phone." ,".$email." ,".$address." WHERE condition";
+                $q = "UPDATE `subscriptions` SET ".$phone.",".$email.",".$address." WHERE condition";
 
 
                 $q = str_replace(", WHERE", " WHERE", $q);
