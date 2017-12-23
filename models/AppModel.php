@@ -156,20 +156,10 @@ class AppModel extends Model
 
 
 
-            public function updateDetails($phone , $email , $address){
+            public function updateDetails($details){
 
-
-                if($phone!=""){
-                    echo $phone;
-                }
-                if($email!=""){
-                    echo $email;
-                }
-                if($address!=""){
-                    echo $address;
-                }
-
-
+                $q= "UPDATE table_name SET ".(isset($details['phone']))?"`phone`$details[phone])":""."WHERE condition";
+                echo $q;
 
             }
 

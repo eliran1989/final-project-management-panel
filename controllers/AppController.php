@@ -76,8 +76,8 @@
 
 
        public function updateDetails(){
-            print_r($_POST);
-         }
+            $this->model->updateDetails($_POST);
+        }
 
 
 
