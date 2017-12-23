@@ -166,8 +166,8 @@ class AppModel extends Model
                 $q = "UPDATE `subscriptions` SET ".$phone.$email.$address." WHERE `id`=".$details['id'];
 
                 $q = str_replace("SET ," , "SET ", $q);
-                echo $q;
-
+               
+                echo $result = $this->db->query($q);
                 
 
             }
