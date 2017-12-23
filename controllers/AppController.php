@@ -76,7 +76,7 @@
 
 
        public function updateDetails(){
-            print_r($_POST);
+          $this->model->updateDetails($_POST['phone'] , $_POST['email'] , $_POST['address']);
        }
 
 

@@ -155,6 +155,25 @@ class AppModel extends Model
             }
 
 
+
+            public function updateDetails($phone , $email , $address){
+
+
+                if($phone!=""){
+                    echo $phone;
+                }
+                if($email!=""){
+                    echo $email;
+                }
+                if($address!=""){
+                    echo $address;
+                }
+
+
+
+            }
+
+
 }
 
 ?>
