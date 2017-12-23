@@ -75,6 +75,14 @@
        }
 
 
+       public function updateDetails(){
+
+
+        echo "updateDetails";
+
+       }
+
+
 
 
     }
