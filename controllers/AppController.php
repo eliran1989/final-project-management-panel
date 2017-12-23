@@ -76,7 +76,7 @@
 
 
        public function updateDetails(){
-            print_r($_POST);
+            print_r($_POST['d']);
          }
 
 
