@@ -158,8 +158,9 @@ class AppModel extends Model
 
             public function updateDetails($details){
 
-                $q= "UPDATE table_name SET ".(isset($details['phone']))?"`phone`$details[phone])":""."WHERE condition";
-                echo $q;
+                print_r($details);
+
+                $q = "UPDATE table_name SET ".(isset($details['phone'])) ? "`phone`=".$details['phone'] :"".", column2 = value2 WHERE condition";
 
             }
 
