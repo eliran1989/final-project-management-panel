@@ -280,7 +280,7 @@ class Subscriber
 
 				$params["txtUserCellular"] = "SpaceGym";
 				$params["destination"] = $this->getPhone();
-				$params["txtSMSmessage"] ="אנו מברכים על הציטרפותך לרשת חדרי הכושר SpaceGym סיסמתך לאפליקציה היא: ".$password." לינק להורדת האפליקציה https://goo.gl/C35hQ8";
+				$params["txtSMSmessage"] ="אנו מברכים על הציטרפותך לרשת חדרי הכושר SpaceGym סיסמתך לאפליקציה היא: ".$password." לינק להורדת האפליקציה https://goo.gl/r2SJEL";
 				$params["dteToDeliver"] = "";
 
 				$result = $client->sendSMSrecipients($params)->sendSMSrecipientsResult;
