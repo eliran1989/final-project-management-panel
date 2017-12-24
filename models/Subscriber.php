@@ -222,7 +222,7 @@ class Subscriber
 	  {
 	   $randomPassword =$this->randomPassword();
 	   echo $randomPassword;
-	  /* $this->sendSms($randomPassword);*/
+	   $this->sendSms($randomPassword);
 	   $this->password = md5("space". $randomPassword);
 	  }
 
